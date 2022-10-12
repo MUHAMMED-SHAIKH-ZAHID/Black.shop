@@ -1,0 +1,85 @@
+
+
+ </div>
+
+<section>
+     <div class="container-fluid">
+         <div class="col-11 d-flex justify-content-center  mt-3 mb-2">
+                
+            </div>
+        </div> 
+   
+        <div class="table table-responsive w-100 d-block d-md-table">
+          <table class="table table-dark table-striped table-hover mt-3" id="tablenew">
+            <thead class="thead-dark"  style="background-color:rgb(9, 9, 9); color: beige;">
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col" >Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Status</th>
+                <th scope="col">Block Or UnBlock</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each users}}
+              <tr>
+                <td><img src="/{{this.userimg.[0]}}" alt="" width="50em"></td>
+                <td>{{this.firstname}}</td>
+                  <td>{{this.lastname}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.mobile}}</td>
+                <td>{{ this.status}}</td>
+                {{#if this.status}}
+                      <td>
+                         <a  class="btn btn-danger"  data-bs-toggle="modal"  data-bs-target="#exampleModal{{this._id}}">Block</a>
+          
+          
+                      </td>
+                     <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+        
+      <div class="modal-body">
+        Are You Sure You Want To  Block{{this.name}}
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+        <a role="button" href="/admin/update-users/{{this._id}}" class="btn btn-danger">Block</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+          
+                      {{else}}
+                      <td>
+                          <a href="/admin/update-users/{{this._id}}" class="btn btn-success">Activate</a>
+                      </td>
+            {{/if}}
+          
+                  {{/each}}
+          
+                   
+            </tbody>
+          </table>
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+
+<script>
+  $(document).ready( function () {
+    $('#tablenew').DataTable();
+} );
+</script>
+

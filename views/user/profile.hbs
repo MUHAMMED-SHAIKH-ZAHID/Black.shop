@@ -1,0 +1,294 @@
+<style>
+  .profile-head { transform: translateY(5rem) } .cover { background-image:
+  url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+  background-size: cover; background-repeat: no-repeat } body { background:
+  #654ea3; background: linear-gradient(to right, #fffefe, #f9f6f9); min-height:
+  100vh; overflow-x:hidden; }
+</style>
+
+<div class="row ">
+  <div class="col-md-12 ">
+    <!-- Profile widget -->
+    <div class="bg-white shadow rounded overflow-hidden">
+      <div class="px-4 pt-0 pb-5 cover">
+        <div class="media align-items-end profile-head">
+          <div class="profile mr-3"><img
+              src="/{{users.userimg}}"
+              alt="Profile Picture"
+              width="130"
+              class="rounded mb-2 img-thumbnail"
+            />
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Edit Profile
+</button>
+           </div>
+
+          
+
+              
+              
+          <div class="media-body mb-5 text-white">
+            <h4 class="mt-0 mb-0"> {{users.firstname}}</h4>
+            <p class="small mb-5">
+              <i class="fas fa-map-marker-alt mr-2"></i>India</p>
+          </div>
+        </div>
+  
+      </div>
+      <div class="bg-light p-4 d-flex justify-content-end text-center">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg></h5><small
+              class="text-muted"
+            > <button  style="text-decoration: none; color: black;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">Add Adress</button></small>
+          </li>
+          {{!-- <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block">745</h5><small
+              class="text-muted"
+            > <i class="fas fa-user mr-1"></i>Followers</small>
+          </li>
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block">340</h5><small
+              class="text-muted"
+            > <i class="fas fa-user mr-1"></i>Following</small>
+          </li> --}}
+        </ul>
+      </div>
+      <div class="px-4 py-3">
+        <h5 class="mb-0 font-italic">About</h5>
+        <div class="p-4  shadow-sm bg-light">
+          <p class="font-italic mb-0">First Name &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{users.firstname}}</span> </p>
+          <p class="font-italic mb-0">Last Name &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{users.lastname}}</span> </p>
+          <p class="font-italic mb-0">Date Of Birth&NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; font-size: large; ">{{users.DOB}}</span></p>
+          <p class="font-italic mb-0">Email&NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; font-size: large; ">{{users.email}}</span></p>
+          <p class="font-italic mb-0">Mobile&NonBreakingSpace;: <span style=" font-family: 'Roboto Mono', monospace; font-size: large; ">{{users.mobile}}</span></p>
+          <p class="font-italic mb-0">Alternative Mobile&NonBreakingSpace;: <span style=" font-family: 'Roboto Mono', monospace; font-size: large; ">{{users.alternatemobile}}</span></p>
+
+          
+          <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> <legend>Edit UserDetails</legend></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <form action="/updateUser" method="post" id="registration" name="registration" enctype="multipart/form-data">
+               
+
+                <div class="form-floating pb-2">
+                    <input type="text" class="form-control" name="firstname" id="firstname" placeholder=" FirstName" value="{{users.firstname}}" >
+                     <label for="first_name">FirstName</label>
+                </div>
+
+                 <div class="form-floating pb-2">
+                    <input type="text" class="form-control" name="lastname" id="lastname" placeholder="LastName" value="{{users.lastname}}" >
+                    <label for="first_name">LastName</label>
+                </div>
+
+                	<div class="form-floating pb-2">
+                  <input type="date" class="form-control" name="DOB" id="DOB" placeholder="Date Of Birth" value="{{users.DOB}}">
+                    <label for="Date Of Birth">Date Of Birth</label>
+                </div>
+
+                <div class="form-floating pb-2">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{users.email}}" >
+                    <label for="email">Email Address</label>
+                </div>
+
+               	<div class="form-floating pb-2">
+                    <input type="number" class="form-control" name="alternatemobile" id="alternatemobile" placeholder="Alternate Mobile" value="{{users.alternatemobile}}">
+                    <label for="Alternate Mobile">Alternate Mobile</label>
+                </div> 
+
+                  <label for="formFile" class="form-label">UPLOAD IMAGES</label>
+                                <div class="row ml-auto">
+                                    <input class="form-control col-8" type="file" multiple id="userimg" name="userimg" />
+                                    <img class="col-3" style="width:2rem ;" id="bannerimg" src="" />
+                                </div>
+                               
+
+               
+               
+               <button type="submit" class="btn btn-secondary d-block mx-auto mt-3">Save Profile</button>
+            </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+        </div>
+
+         
+                   
+        
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> <legend>Add Address</legend></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <form action="/addAddress" method="post" id="registration" name="registration">
+               
+                      <div class="row mt-3">
+                     <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="Enter Name" name="Name" id="Name" value=""></div>
+                    <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="Enter phone number" name="mobile" id="mobile" value=""></div>
+                
+                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" name="Address1" id="Address1" value=""></div>
+                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" name="Address2" id="Address2" value=""></div>
+                    <div class="row mt-2">
+                       <div class="col-md-8"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter Area" name="Area" id="Area" value=""></div>
+                    <div class="col-md-4"><label class="labels">Pincode</label><input type="text" class="form-control" placeholder="enter Pincode" name="pincode" id="pincode" value=""></div>   
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">District</label><input type="text" class="form-control" placeholder="enter District" name="District" id="District" value=""></div>
+                    <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter the State" name="State" id="State" value=""></div>
+                </div>
+                 <div>Type</div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                   
+                                    <input type="radio" class="btn-check" value="Home" name="Type" id="btnradio1"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-dark" for="btnradio1">HOME</label>
+
+                                    <input type="radio" class="btn-check" value="Office" name="Type" id="btnradio2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio2">OFFICE</label>
+
+                                    <input type="radio" class="btn-check" value="College" name="Type" id="btnradio3"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio3">COLLEGE</label>
+
+
+                                    <input type="radio" class="btn-check" value="Other" name="Type" id="btnradio4"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio4">OTHER</label>
+                                </div>
+                        <div class="mt-5 text-center"><button class="btn btn-dark profile-button" type="submit">Save Address</button></div>
+                 </form>
+                </div>
+          
+            </div>
+        </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    
+ 
+ <link rel="stylesheet" href="/assets/css/address.css" >
+  <div class="row">
+   {{#each address}}
+<div class="col-md-3 col-sm-6 pt-5">
+  <div class="card">
+    <h3 class="title ">{{#spg this.Type "Home"}}
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house text white" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+</svg>{{/spg}}
+{{#spg this.Type "Office"}}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+</svg>{{/spg}}
+{{#spg this.Type "College"}}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+  <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+</svg>{{/spg}}
+
+      {{this.Type}} &NonBreakingSpace; Address  &NonBreakingSpace;  &NonBreakingSpace;
+      
+                      <a onclick="deleteAddress('{{this._id}}')" class="text-white  align-items-end"><i class="fas fa-times"></i></a>
+                    </h3>
+      
+    <div class="bar">
+      <div class=""></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="">
+     
+     <div class="p-2 rounded shadow-sm bg-black">
+          <p class="font-italic mb-0"> Name &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; "  >{{this.Name}}</span> </p>
+          <p class="font-italic mb-0"> Mobile &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.mobile}}</span> </p>
+          <p class="font-italic mb-0"> Address 1 &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.Address1}}</span> </p>
+          <p class="font-italic mb-0"> Address 2 &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.Address2}}</span> </p>
+          <p class="font-italic mb-0"> Pincode &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.pincode}}</span> </p>
+          <p class="font-italic mb-0"> Area &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.Area}}</span> </p>
+          <p class="font-italic mb-0"> District &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.District}}</span> </p>
+          <p class="font-italic mb-0"> State &NonBreakingSpace;: <span  style=" font-family: 'Roboto Mono', monospace; ">{{this.State}}</span> </p>
+    </div>
+  </div>
+    </div>
+  </div>
+    {{/each}}
+    </div>
+</div>
+       
+        
+               
+       
+        </div>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const deleteAddress =  (id) =>{
+    swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  className:"swal-delete",
+  dangerMode: true,
+})
+.then(async(willDelete) => {
+  if (willDelete) {
+    
+  
+        await axios.post(`/deleteAddress/${id}`,{}).then((e)=>{
+            console.log(id)
+          }) 
+      
+    swal("Poof! Your  file has been deleted!", {
+      icon: "success",
+       className:"swal-delete",
+        button:false,
+       timer: 7000,
+    });
+    window.location.reload()
+  } else {
+    swal({
+      text:"Your Address file is safe!",
+      className:"swal-delete",
+       button:false,
+      timer: 700,
+    });
+  }
+});
+
+
+ 
+  
+      }
+
+      
+
+
+   
+    </script>

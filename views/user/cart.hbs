@@ -1,0 +1,365 @@
+<link rel="stylesheet" href="/assets/css/cart.css">
+{{#if response.notEmpty}}
+<section class="" style="background-color: #f7f5f5;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2 w-100" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h6 class="mb-0 text-muted" id="cart-count"> items</h6>
+
+
+                  </div>
+                  <hr class="my-4">
+                  {{#each cart.Cart}}
+                  <div class="row mb-4 d-flex justify-content-between align-items-center">
+
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img src="/{{this.product.myimg.[0]}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-muted">Model</h6>
+                      <h6 class="text-black mb-0">{{this.product.pro_name}}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <button onclick="quantityMinus('{{this.product._id}}')" class="btn btn-sm btn-white btn-minus">
+                        <i class="fa fa-minus"></i>
+                      </button>
+
+
+
+                      <input type="number" class="form-control form-control-sm bg-white text-center"
+                        id="{{this.product._id}}" value="{{this.quantity}}" disabled>
+
+
+                      <div class="input-group-btn">
+                        <button onclick="quantityPlus('{{this.product._id}}')" class="btn btn-sm btn-white btn-plus">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+
+
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0" id="{{this.product._id}}">&#8377;{{this.product.price}}</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a href="#!" onclick="deleteFromCart('{{this.product._id}}')" class="text-muted"><i
+                          class="fas fa-times"></i></a>
+                    </div>
+
+                  </div>
+
+
+                  <hr class="my-4">
+                  {{/each}}
+
+
+
+
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a href="/user-home" class="text-body"><i
+                          class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4 " id="abcd">
+                    <h5 class="text-uppercase" id="cart-count">Sub Total </h5>
+                    <h5>&#8377; <span id="subtotal">{{subtotal cart.Cart}}</span></h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase mb-3">Shipping</h5>
+                    <h5> <span id="shipping">&#8377;</span></h5>
+                  </div>
+
+
+
+                  {{!-- <div class="mb-4 pb-2">
+                    <select class="select">
+                      <option value="1">Standard-Delivery- €5.00</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                    </select>
+                  </div> --}}
+
+                  <h5 class="text-uppercase mb-3">Coupon code</h5>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control  form-control-lg" id="couponCode">
+                    <div class="input-group-append">
+                      <button class="btn btn-dark pe-1" onclick="applyCoupon()">Apply Coupon</button>
+                    </div>
+                  </div>
+                  <div class="mb-5">
+                    <div class="form-outline d-flex justify-content-center mt-4">
+                      <a type="button" class="btn btn-white bg-white " data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        <img src="/images/coupon.jpg" width="30rem" height="30rem" > Show Coupon Code
+                      </a>
+
+                    </div>
+                    <!-- Button trigger modal -->
+
+
+
+
+                    <div class="d-flex justify-content-between mb-3 pt-5">
+                      <h6 class="font-weight-medium">Coupon Discount</h6>
+                      <h6 class="font-weight-medium">&#8377; <span id="couponDiscount">0</span> </h6>
+                    </div>
+
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between mt-2" id="total">
+                      <h5 class="font-weight-bold text-uppercase">Total price</h5>
+                      <h5 class="font-weight-bold">&#8377; <span id="grandTotal"></span></h5>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <a href="/checkout" type="button" class="btn btn-dark btn-block  btn-lg mt-3"
+                        data-mdb-ripple-color="dark">Proceed To Checkout</a>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel">
+          COUPONS 
+            
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{#if data.nothing}}
+        <h1 class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+</svg></h1>
+        <h4>sorry no coupons are Available for you</h4>
+        {{else}}
+        {{#each data.coupons}}
+        <input type="text" class="col-10" id="myInput{{this._id}}" name="code" value="{{this.code}}" disabled>
+        <button  onclick="myFunction('{{this._id}}')"><i class="fa-solid fa-copy "></i></button><br><br>
+        {{/each}}
+        {{/if}}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+            {{else}}
+            <div class="d-flex justify-content-center pt-5 mt-5">
+                <div style="font-size: medium;">
+                  <strong><small>YOUR BASKET IS EMPTY</small></strong> 
+                </div>
+            </div>
+            {{/if}}
+
+
+
+
+
+
+
+<script>
+  function myFunction(id) {
+    // Get the text field
+    var copyText = document.getElementById("myInput" + id);
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+
+    // Alert the copied text
+    swal({
+      text: "Copied the Coupon:" + copyText.value,
+      icon: "success",
+      button: false,
+      timer: 1000
+    })
+  }
+</script>
+
+
+<script>
+  const quantityPlus = async (id) => {
+    let quantity=document.getElementById(id).value;
+    console.log(quantity,"quantity quantity quantity quantity quantity quantity quantity quantity")
+    try {
+      const res = await axios.post(`/quantityplus/${id}`, {quantity}).then((e) => {
+        console.log(id)
+        if(e.data.response.noStock){
+        swal({
+                text: "Oops out of stock",
+                icon: "info",
+                button:false,
+                timer: 1000
+                })
+        }else{
+        document.getElementById(id).value = e.data.response.count
+      //$('#subtotal').load(window.location.href + ' #subtotal');
+      //$('#shipping').load(window.location.href + ' #shipping');
+      //$('#couponDiscount').load(window.location.href + ' #couponDiscount');
+      //total(id)
+     // $('#grandTotal').load(window.location.href + ' #grandTotal');
+      window.location.reload(true)
+        }
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const quantityMinus = async (id) => {
+    try {
+      const res = await axios.post(`/quantityminus/${id}`, {}).then((e) => {
+        console.log(id)
+        if (e.data.response.count === 0) {
+          window.location.reload()
+
+        } else {
+          document.getElementById(id).value = e.data.response.count
+          window.location.reload()
+
+        }
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const deleteFromCart = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Remove item From Cart !",
+      icon: "warning",
+      buttons: true,
+      className: "swal-delete",
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+
+
+          const res = await axios.post(`/deleteFromCart/${id}`, {}).then((e) => {
+            console.log(id)
+          })
+
+          swal("Poof! Your  file has been deleted!", {
+            icon: "success",
+            className: "swal-delete",
+            button: false,
+            timer: 7000,
+          });
+          window.location.reload()
+        } else {
+          swal({
+            text: "Your  Product is Safe!",
+            className: "swal-delete",
+            button: false,
+            timer: 700,
+          });
+        }
+      });
+  }
+
+  const total = (id) => {
+    let price = document.getElememtById(id + 'price').innerHTML
+    let quantity = document.getElementById(id).value
+    const total = parseInt(price) * parseInt(quantity)
+    document.getElementById(id + 'total').innerHTML = total;
+  }
+  let subtotal = document.getElementById('subtotal').innerHTML
+  document.subtotal = subtotal
+  console.log(document, 'its in subtotal document of cart page')
+  document.addEventListener('DOMContentLoaded', myFunc, false)
+  function myFunc(evt) {
+    let subtotal = parseInt(document.getElementById('subtotal').innerHTML)
+    console.log(subtotal, 'asdjfalsjfdlk')
+    if (subtotal >= 10000) {
+      document.getElementById('shipping').innerHTML = '0'
+      document.getElementById('grandTotal').innerHTML = subtotal
+    } else if (subtotal > 0) {
+      console.log('here')
+      document.getElementById('shipping').innerHTML = '100'
+      document.getElementById('grandTotal').innerHTML = parseInt(subtotal) + 100 + ''
+    }
+  }
+
+  const applyCoupon = async () => {
+    let couponCode = document.getElementById('couponCode').value
+    if (couponCode == '') {
+      swal("warning", "invalid Coupon Empty", "warning")
+    } else {
+      try {
+        axios.post('/applyCoupon', { code: couponCode }).then((e) => {
+          console.log(e.data.response, "Muhammed Shaikh Zahid")
+          if (e.data.response.discount) {
+            document.getElementById('couponDiscount').innerHTML = e.data.response.discount
+            document.getElementById('grandTotal').innerHTML = e.data.response.grandTotal
+            beep();
+              swal({
+                text: "coupon Applied",
+                icon: "success",
+                button:false,
+                timer: 1000
+                })
+                    function beep() {
+    var snd = new Audio("/assets/img/Coins.mp3");  
+    snd.play();
+}
+
+          } else {
+           swal({
+                text: "Sorry Coupon Is Already Used",
+                icon: "warning",
+                button:false,
+                timer: 1000
+                })
+          }
+
+        })
+      } catch (err) {
+        console.log(err)
+      }
+
+    }
+
+  }
+
+
+</script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>

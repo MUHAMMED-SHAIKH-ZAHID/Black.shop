@@ -1,0 +1,26 @@
+
+
+
+        <form action="/admin/subcategoryregister" method="post" role="form" id="registration">
+                <legend>For New SubCaategory</legend>
+
+                <div class="form-group">
+                    <label for="first_name">Sub CategoryName</label>
+                    <input type="text" class="form-control" name="subCategoryName" id="name" placeholder=" Name" required >
+                </div>
+
+                 <select class="form-select" aria-label="Default select example" name="Category">
+                 <option selected>Open this select menu</option>
+                 {{#each category}}
+                <option value="{{this._id}}">{{this.categoryname}}</option>
+                
+                {{/each}} 
+                </select>
+
+
+			
+
+
+                <button type="submit" class="btn btn-dark d-block mx-auto mt-3">Confirm</button> 
+
+</form>

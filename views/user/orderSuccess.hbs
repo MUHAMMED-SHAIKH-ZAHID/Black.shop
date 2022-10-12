@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="/assets/css/ordersuccessicon.css"
+
+<section class=" w-100 h-100 d-flex justify-content-center text-center mt-5 ">
+    
+           <style media="screen">
+     
+     
+   </style>
+          
+   <div class="animation-ctn mt-5 ">
+    <h5 class="display-4 mx-auto">ORDER CONFIRMED</h5>
+         <div class="icon icon--order-success svg">
+           <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">
+               <g fill="none" stroke="#22AE73" stroke-width="2">
+                 <circle cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+                 <circle id="colored" fill="#22AE73" cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+                 <polyline class="st0" stroke="#fff" stroke-width="10" points="43.5,77.8 63.7,97.9 112.2,49.4 " style="stroke-dasharray:100px, 100px; stroke-dashoffset: 200px;"/>
+               </g>
+           </svg>
+       </div>
+       <br />
+       <h5>Thank You {{session.users.firstname}} ,Your Order Is Confirmed</h5>
+     <p>You will recieve a conformation SMS of your Order Shortly</p>
+     <p> Your Order ID Is   {{order._id}}</p>
+     <a href="/orderDetails/{{order._id}}" class="btn btn-outline-secondary ">Track Orders</a>
+     <a href="/user-home" class="btn btn-outline-secondary">Continue Shopping</a>
+   </div>
+        
+    </div>
+     
+</section>
+
+
+
+
+
+<script>
+
+      function beep() {
+    var snd = new Audio("/assets/img/Google Pay.mp3");  
+    snd.play();
+}
+document.addEventListener('DOMContentLoaded', beep);
+</script>
+
+
+
+
+<script>
+    const downloadInvoice = function (order) {
+        console.log(order._id)
+        var data = {
+            //"documentTitle": "RECEIPT", //Defaults to INVOICE
+            "currency": "INR",
+            "taxNotation": "vat", //or gst
+            "marginTop": 25,
+            "marginRight": 25,
+            "marginLeft": 25,
+            "marginBottom": 25,
+            "logo": "https://www.easyinvoice.cloud/img/logo.png", //or base64
+            //"logoExtension": "png", //only when logo is base64
+            "sender": {
+                "company": "ReverbAudio",
+                "address": "Kozhikode,KERALA",
+                "zip": "673004",
+                "city": "Kozhikode",
+                "country": "INDIA"
+                //"custom1": "custom value 1",
+                //"custom2": "custom value 2",
+                //"custom3": "custom value 3"
+            },
+            "client": {
+                "company": order.totalPrice,
+                "address": "Clientstreet 456",
+                "zip": "4567 CD",
+                "city": "Clientcity",
+                "country": "Clientcountry"
+                //"custom1": "custom value 1",
+                //"custom2": "custom value 2",
+                //"custom3": "custom value 3"
+            },
+            "invoiceNumber": "2020.0001",
+            "invoiceDate": "05-01-2020",
+            "products": [
+                {
+                    "quantity": order.orderItems.quantity,
+                    "description": "Test1",
+                    "tax": 6,
+                    "price": 33.87
+                },
+                {
+                    "quantity": "4",
+                    "description": "Test2",
+                    "tax": 21,
+                    "price": 10.45
+                }
+            ],
+            "bottomNotice": "Kindly pay your invoice within 15 days."
+        };
+        //Create your invoice! Easy!
+        easyinvoice.createInvoice(data, function (result) {
+            //The response will contain a base64 encoded PDF file
+            //console.log(result.pdf);
+
+            // easyinvoice.download('myInvoice.pdf', result.pdf);
+        });
+    }
+</script>

@@ -1,0 +1,272 @@
+<link rel="stylesheet" href="/assets/css/checkout.css">
+
+
+<div class="container">
+    <header class="principal">
+        <h1>Place Order</h1>
+    </header>
+
+
+    <div class="division">
+        <div class="row" style="--bs-gutter-x: 0 !important;">
+            <div class="row col-lg-8 col-12 ">
+
+                <div class="col-md-12 col-sm-12 pt-3">
+                    <label class="w-100 h-100">
+                        <div class="card w-100  ">
+                            <h4 class="pt-1 "><input type="radio" name="address" value="{{address._id}}" id="" hidden
+                                    checked>
+                                &NonBreakingSpace; Shipping Address &NonBreakingSpace; &NonBreakingSpace;
+                            </h4>
+
+                            <div class="">
+                                <div class="pe-2"></div>
+                                <div class="  "></div>
+                            </div>
+
+
+                            <div class="container-fluid p-2 px-4 " style="padding: left 30px !important;">
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.Name}}</span> </p>
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.mobile}}</span> </p>
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.Address1}}</span>
+                                </p>
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.Address2}}</span>
+                                </p>
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.pincode}}&NonBreakingSpace;{{address.Area}}</span>
+                                </p>
+                                <p class="font-italic mb-0"> <span
+                                        style=" font-family: 'Roboto Mono', monospace; ">{{address.District}}&NonBreakingSpace;{{address.State}}</span>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="accordion pt-3" id="accordionPanelsStayOpenExample">
+                            <label class="w-100 h-100" for="cod">
+                                <div class="accordion-item bgblack">
+                                    <h2 class="accordion-header bgblack" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button bgblack " type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                            aria-controls="panelsStayOpen-collapseOne">
+                                            Cash On Delivery
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <strong>
+                                                <h3><input type="radio" name="payment" value="COD" id="cod"
+                                                        checked>
+                                                </h3>
+                                            </strong> For cash-on-delivery terms, goods are shipped before
+                                            payment is made. For cash-in-advance terms, the seller requires the
+                                            buyer to make the entire payment upfront in order to initiate the
+                                            shipping process. This protects the seller from lost money for goods
+                                            shipped without payment.
+                                        </div>
+                                    </div>
+                            </label>
+                        </div>
+                        <label class="w-100 h-100" for="razorpay">
+                        <div class="accordion-item bgblack">
+
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button bgblack  collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo">
+                                    Razorpay
+                                </button>
+                            </h2>
+                            
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div class="accordion-body">
+                                        <strong>
+                                            <h3><input type="radio" name="payment" value="razorpay" id="razorpay" >
+                                            </h3>The Razorpay is used as a Test Mode due to Security Purpose
+                                        </strong>
+                                    </div>
+                                </div>
+                        </div>
+                     </label>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree">
+                                    paypal
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="panelsStayOpen-headingThree">
+                                <div class="accordion-body">
+                                    Currenly Not Availabe In India
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </label>
+
+            </div>
+
+        </div>
+        <main class="grey col-lg-4 col-12 mt-3">
+            <h4 class="d-flex justify-content-center pt-3">Order Summary</h4>
+            <div class="d-flex flex-column">
+                <div class="cart-preview card-scroll ">
+                    {{#each cartProducts.Cart}}
+                    <div class="cart-item">
+                        <img src="/{{this.product.myimg.[0]}}" alt="product" />
+                        <div>
+                            <div>
+                                <div class="name pt-2">Model :{{this.product.pro_name}}</div>
+                                <div class="price pt-2"><span class="discounted">&#8377;
+                                        {{this.product.price}}</span>
+                                    <span< /span>
+                                </div>
+                                <div class="name pt-2 ">Quantity :{{this.quantity}}</div>
+                            </div>
+                            {{!-- <div class="">
+                                <span class="material-icons">remove</span>
+                                <span class="qty">1</span>
+                                <span class="s">add</span>
+                            </div> --}}
+                        </div>
+                    </div>
+                    {{/each}}
+
+
+                </div>
+                <div class="cart-preview">
+                    <div class="shipping">
+                        <span>Shipping:</span><span>&#8377; {{response.shiping}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Discount:</span><span> &#8377;{{response.discount}}</span>
+                    </div>
+                    <div class="total">
+                        <span>Total:</span><span style=" font-weight: 600;
+                    text-decoration: none;
+                    color: #141313;">&#8377; {{response.grandTotal}}</span>
+                    </div>
+                    <div class="d-flex justify-content-center pt-3">
+                        <button onclick="placeOrder()" class="btn btn-dark btn-block  btn-lg mt-3"
+                            data-mdb-ripple-color="dark">Place Order</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+<script>
+ 
+     const razorPayment = (data) => {
+        console.log(data.user,"data data data dddddddddddddddddddaaaaaaaaaaaaaaaaaatttttttttttttttttttttttaaaaaaaaaaaaa data data data data data")
+        var options = {
+            "key": "rzp_test_oATRbT4PCHFVYP", // Enter the Key ID generated from the Dashboard
+            "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Black",
+            "description": "Test Transaction",
+            "image": "/images/razorPaydp.jpg",
+            "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                verifyPayment(response, data)
+              },
+            "prefill": {
+                "name": data.user.firstname,
+                "email": data.user.email,
+                "contact": data.user.mobile,
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#F2F2F2"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+            verifyPayment(response, data);
+        });
+        rzp1.open();
+
+    }
+
+
+    const placeOrder = async () => {
+        let paymentMethod = $('input[type="radio"][name="payment"]:checked').val()
+        let address = $('input[type="radio"][name="address"]:checked').val()
+    try {
+        await axios.post(`/placeOrder`, {
+            paymentMethod: paymentMethod,
+            address: address
+        }).then((e) => {
+            console.log(e.data.order)
+          if(paymentMethod === "COD"){
+            
+            console.log(paymentMethod,'success')
+               function beep() {
+    var snd = new Audio("/assets/img/Google Pay.mp3");  
+    snd.play();
+}
+beep();
+             location.href = `/orderSuccess/${e.data.order._id}`;
+          
+           }else {
+            console.log(e.data.data,"razorpay razorpay RazorPay RazorPay RazorPay RazorPay  RazorPay yyyyyyyyyaaaaaaaaaaaaappppppppppp")
+            razorPayment(e.data.data)
+            
+          }
+        })
+    }catch(err){
+      console.log(err)
+    }
+    }
+
+    const verifyPayment = async (payment, order) => {
+        try {
+            const res = await axios.post('/verifyPayment',{
+                payment,
+                order
+            }).then((e) => {
+                if (e.data.status) {
+   function beep() {
+    var snd = new Audio("/assets/img/Google Pay.mp3");  
+    snd.play();
+}
+beep();
+                    location.href = `/orderSuccess/${order.receipt}`;
+                } else {
+                    alert('SORRY ERROR SOMETHING WENT WRONG!!!');
+                }
+            })
+        } catch {
+
+        }
+    }
+</script>

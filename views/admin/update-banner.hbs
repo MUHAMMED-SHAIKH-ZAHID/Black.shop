@@ -1,0 +1,44 @@
+                            <form class="mx-1 mx-md-4" id="myform1" action="/admin/updated-banner/{{banner._id}}" method="post"
+                                enctype="multipart/form-data">
+
+
+                                
+
+                           
+
+
+                                <select class="form-select mt-2" aria-label="Default select example " id="product" 
+                                    name="product" >
+                                    <option value="{{product._id}}" selected hidden disabled> {{product.pro_name}}Select Product</option>
+                                     {{#each product}}
+                                    <option value="{{this._id}}">{{this.pro_name}}</option>
+                                    {{/each}}
+                                </select>
+
+
+
+                                <div class="form-floating mt-2 pt-2">
+                                    <input type="text" class="form-control" name="title" id="title" value="{{banner.title}}"
+                                        placeholder="Title" />
+                                    <label for="floatingInput">Title</label>
+                                </div>
+
+                                
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="subTitle" id="subTitle" value="{{banner.subTitle}}"
+                                        placeholder="SubTitle" />
+                                    <label for="floatingInput">SubTitle</label>
+                                </div>
+
+
+                                <label for="formFile" class="form-label">UPLOAD IMAGES</label>
+                                <div class="row ml-auto">
+                                    <input class="form-control col-8" type="file" multiple id="bannerimg" name="bannerimg" />
+                                    <img class="col-3" style="width:2rem ;" id="bannerimg" src="" />
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-dark mt-3 text-center">Submit</button>
+                                </div>
+
+
+                            </form>

@@ -1,0 +1,131 @@
+<section>
+    <div class="container ">
+        <h4>Orders</h4>
+        <table class="table  border border-dark" style="width:100%" id="example">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-transform:capitalize;">No.</th>
+                    <th scope="col" style="text-transform:capitalize;">customer</th>
+                    <th scope="col" style="text-transform:capitalize;">products</th>
+                    <th scope="col" style="text-transform:capitalize;">Quantity</th>
+                    <th scope="col" style="text-transform:capitalize;">Total Price</th>
+                    <th scope="col" style="text-transform:capitalize;">Payment Method</th>
+                    <th scope="col" style="text-transform:capitalize;">Payment Status</th>
+                    <th scope="col" style="text-transform:capitalize;">Delivery Status</th>
+                    <th scope="col" style="text-transform:capitalize;">Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <td>{{inc1 @index}}</td>
+                    <td>{{this.user.firstname}}</td>
+                    <td>{{#each this.orderItems}}{{this.product.pro_name}} <br>{{/each}}</td>
+                    <td>{{#each this.orderItems}}{{this.quantity}}<br>{{/each}}</td>
+                    <td>{{this.totalPrice}}</td>
+                    <td>{{this.paymentDetails}}</td>
+                    <td>{{#if this.orderStatus}}Approved{{else}}Pending{{/if}}</td>
+                    <td>{{#if (eq this.deliveryStatus 'Cancelled')}}
+                         <button class="btn btn-danger">{{this.deliveryStatus}}</button>
+                         {{else}}
+                        {{#if (eq this.deliveryStatus 'Delivered')}}
+                        <button class="btn btn-success">{{this.deliveryStatus}}</button>
+                        {{else}}
+                        <div id="modalDiv{{this._id}}">
+                            <button type="button" class="btn btn-primary col mx-auto"
+                                data-bs-toggle="modal" data-bs-target="#m{{this._id}}">
+                                {{this.deliveryStatus}}
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="m{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="padding-top: 5px;padding-bottom: 5px;">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="mx-1 mx-md-4" id="shippinform{{this._id}}"
+                                                action="/admin/changeShipping/{{this._id}}" method="post">
+                                                <div class="d-flex flex-row align-items-center mb-1">
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label class="form-label" for="form3Exsdsdample1c">
+                                                            Change Delivery Status</label>
+                                                        <select name="shipping"  id="select{{this._id}}">
+                                                            {{#if (eq this.deliveryStatus 'processing')}}
+                                                            <option value="shipped">Shipped</option>
+                                                            <option value="Out For Delivery">Out For Delivery</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                            {{else if (eq this.deliveryStatus 'shipped')}}
+                                                            <option value="OutForDelivery">Out For Delivery</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                            {{else if (eq this.deliveryStatus 'OutForDelivery')}}
+                                                            <option value="Delivered">Delivered</option>
+                                                            {{else if (eq this.deliveryStatus 'Cancelled')}}
+                                                            {{/if}}
+                                                        </select>
+                                                    </div>
+                                                </div
+
+                                                <div class="d-flex justify-content-center mx-4 mb-1 mb-lg-4">
+                                                    <button type="submit"
+                                                        class="btn btn-dark btn-lg" form="shippinform{{this._id}}">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}{{/if}}
+                    </td>
+                    <td>{{dateFormat this.createdAt}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+</section>
+<script src="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+   <script>src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"</script> 
+
+<script>
+        $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        
+
+    } );
+} );
+    </script>
+
+<script>
+
+
+
+    const showUpdate = (id) => {
+        let curr = document.getElementById(`modalDiv${id}`).style.display
+        if(curr === '')
+        document.getElementById(`modalDiv${id}`).style.display = "none"
+        else
+        document.getElementById(`modalDiv${id}`).style.display = ""
+    }
+
+
+</script>

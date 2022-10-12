@@ -1,0 +1,39 @@
+<form class="mx-1 mx-md-4" id="myform1" action="/admin/Update-coupons/{{coupon._id}}" method="post">
+
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="name" id="name" value="{{coupon.name}}"
+            placeholder="Coupon Name" />
+        <label for="floatingInput">Coupon Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="code" id="code" value="{{coupon.code}}"
+            placeholder="Coupon Code" />
+        <label for="floatingInput">Coupon Code</label>
+    </div>
+
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="description" id="Username" value="{{coupon.description}}"
+            placeholder="description" />
+        <label for="floatingInput">Description</label>
+    </div>
+    <div class="form-floating mb-2 mt-2">
+        <input type="number" class="form-control" name="percentage" id="percentage" value="{{coupon.percentage}}"
+            placeholder="Percentage" />
+        <label for="floatingInput">Percentage</label>
+    </div>
+
+    <div class="form-floating mb-2 mt-2">
+        <input type="number" class="form-control" name="maximum" id="maximum" placeholder="maximum" value="{{coupon.maximum}}">
+        <label for="floatingInput">Maximum Discount</label>
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-dark mt-3 text-center">Submit</button>
+    </div>
+
+
+</form>

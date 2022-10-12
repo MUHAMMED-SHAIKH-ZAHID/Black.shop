@@ -1,0 +1,127 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+   Add Banner
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">Add Banner</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <form class="mx-1 mx-md-4" id="myform1" action="/admin/register-banner" method="post"
+                                enctype="multipart/form-data">
+
+
+                                
+
+                           
+
+
+                                <select class="form-select mt-2" aria-label="Default select example " id="product"
+                                    name="product">
+                                    <option selected> select Product</option>
+                                     {{#each product}}
+                                    <option value="{{this._id}}">{{this.pro_name}}</option>
+                                    {{/each}}
+                                </select>
+
+
+
+                                <div class="form-floating mt-2 pt-2">
+                                    <input type="text" class="form-control" name="title" id="title"
+                                        placeholder="Title" />
+                                    <label for="floatingInput">Title</label>
+                                </div>
+
+                                
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="subTitle" id="subTitle"
+                                        placeholder="SubTitle" />
+                                    <label for="floatingInput">SubTitle</label>
+                                </div>
+
+
+                                <label for="formFile" class="form-label">UPLOAD IMAGES</label>
+                                <div class="row ml-auto">
+                                    <input class="form-control col-8" type="file" multiple id="bannerimg" name="bannerimg" />
+                                    <img class="col-3" style="width:2rem ;" id="bannerimg" src="" />
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-dark mt-3 text-center">Submit</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="container-fluid">
+        <div class="col-11 d-flex justify-content-center  mt-3 mb-2">
+
+        </div>
+    </div>
+                 {{banner.product}}
+
+
+    <div class="table table-responsive w-100 d-block d-md-table">
+        <table class="table table-dark table-striped table-hover mt-3" id="tablenew">
+            <thead class="thead-dark" style="background-color:rgb(9, 9, 9); color: beige;">
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Subtitle</th>
+                    <th scope="col">Photos</th>
+                    <th scope="col"></th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each banner}}
+                <tr>
+                    <td>{{this.product.pro_name}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.subTitle}}</td>
+                    <td><img src="/{{this.bannerimg.[0]}}" alt="" width="100em"></td>
+                     <td><img src="/{{this.bannerimg.[1]}}" alt="" width="100em"></td>
+                    <td> <a href="/admin/update-banner/{{this._id}}" class="btn btn-info">Update</a> </td>
+                    <td> <a  data-bs-toggle="modal" data-bs-target="#exampleModal{{this._id}}" class="btn btn-warning">Delete</a>
+                   </td></tr>
+                   
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+        
+      <div class="modal-body">
+        Are You Sure You Want To Remove product {{this.title}}
+      </div>
+      <div class="modal-footer">
+        <a role="button" href="/admin/delete-banner/{{this._id}}" class="btn btn-danger">Delete</a>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+                 
+ {{/each}}

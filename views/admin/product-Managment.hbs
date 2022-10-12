@@ -1,0 +1,228 @@
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Product
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">Add Product</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <form class="mx-1 mx-md-4" id="myform1" action="/admin/register-products" method="post"
+                                enctype="multipart/form-data">
+
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="pro_name" id="pro_name"
+                                        placeholder=" Name" />
+                                    <label for="floatingInput">Product Name</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="description" id="Username"
+                                        placeholder="Username" />
+                                    <label for="floatingInput">Description</label>
+                                </div>
+                                
+                                  <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="material"  id="Username"
+                                        placeholder="material" />
+                                    <label for="floatingInput">material</label>
+                                </div>
+
+
+
+
+
+                                {{!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <h5 class="col-md-4"> Size</h5>
+                                    <input type="radio" class="btn-check" value="XL" name="size" id="btnradio1"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-dark" for="btnradio1">XL</label>
+
+                                    <input type="radio" class="btn-check" value="L" name="size" id="btnradio2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio2">L</label>
+
+                                    <input type="radio" class="btn-check" value="M" name="size" id="btnradio3"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio3">M</label>
+
+
+                                    <input type="radio" class="btn-check" value="S" name="size" id="btnradio4"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio4">S</label>
+                                </div> --}}
+
+
+                                <div class="form-floating mb-2 mt-2">
+                                    <input type="number" class="form-control" name="price" id="phone"
+                                        placeholder="Price" />
+                                    <label for="floatingInput">Price</label>
+                                </div>
+
+                                <div class="form-floating mb-2 mt-2">
+                                    <input type="number" class="form-control" name="discount" id="phone"
+                                        placeholder="Discount Price" />
+                                    <label for="floatingInput">Discount</label>
+                                </div>
+
+                                <select class="form-select mt-2" aria-label="Default select example" name="Category"
+                                    id="selectCategory">
+                                    <option value="select" selected> select Category</option>
+                                    {{#each category}}
+                                    <option value="{{this._id}}">{{this.categoryname}}</option>
+                                    {{/each}}
+                                </select>
+
+
+                                <select class="form-select mt-2" aria-label="Default select example " id="subCategory"
+                                    name="SubCategory">
+                                    <option selected> select SubCategory</option>
+                                     {{#each subCategory}}
+                                    <option value="{{this._id}}">{{this.subCategoryName}}</option>
+                                    {{/each}}
+                                </select>
+
+
+
+                                <div class="form-floating mt-2 pt-2">
+                                    <input type="text" class="form-control" name="Stock" id="Username"
+                                        placeholder="Stock" />
+                                    <label for="floatingInput">Stock</label>
+                                </div>
+
+
+                                <label for="formFile" class="form-label">UPLOAD IMAGES</label>
+                                <div class="row ml-auto">
+                                    <input class="form-control col-8" type="file" multiple id="myimg" name="myimg" />
+                                    <img class="col-3" style="width:2rem ;" id="myimg" src="" />
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-dark mt-3 text-center">Submit</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{!-- PRODUCT TABLE --}}
+<section>
+    <div class="container-fluid">
+        <div class="col-11 d-flex justify-content-center  mt-3 mb-2">
+
+        </div>
+    </div>
+
+    <div class="table table-responsive w-100 d-block d-md-table">
+        <table class="table table-dark table-striped table-hover mt-3" id="tablenew">
+            <thead class="thead-dark" style="background-color:rgb(9, 9, 9); color: beige;">
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">SubCategory</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Photos</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each product}}
+                <tr>
+
+                    <td>{{this.pro_name}}</td>
+                    <span class="d-inline-block text-truncate" style="max-width:150px;">
+                       <td>{{slice this.description}}</td>
+                    </span>
+                  
+                    <td>{{this.size}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{ this.discount}}</td>
+                    <td>{{ this.Category.categoryname}}</td>
+                    <td>{{this.SubCategory.subCategoryName}}</td>
+                    <td>{{this.Stock}}</td>
+                    <td><img src="/{{this.myimg.[0]}}" alt="" width="120em"></td>
+                    <td> <a href="/admin/update-product/{{this._id}}" class="btn btn-info">Update</a> </td>
+                    <td> <a  data-bs-toggle="modal" data-bs-target="#exampleModal{{this._id}}" class="btn btn-warning">Delete</a>
+                   </td></tr>
+               
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+        
+      <div class="modal-body">
+        Are You Sure You Want To Remove product {{this.pro_name}}
+      </div>
+      <div class="modal-footer">
+        <a role="button" href="/admin/delete-product/{{this._id}}" class="btn btn-danger">Delete</a>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+                 
+ {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+
+
+</section>
+<script>
+    document.getElementById('selectCategory').onchange = getSubcategory;
+    async function getSubcategory() {
+        let value = this.value;
+        console.log(value)
+        if (value == 'select') return false;
+        console.log(value)
+        const res = await axios.get(`/admin/getsubcategory/${value}`).then((e) => {
+            console.log(e.data.subcategories)
+            for (let i = 0; i < e.data.subcategories; i++) {
+                $('#subCategory').append(`<option value="${optionValue}">
+                                       ${optionText}
+                                  </option>`);
+            }
+
+        })
+
+    }
+</script>
+<script>
+  $(document).ready( function () {
+    $('#tablenew').DataTable();
+} );
+</script>

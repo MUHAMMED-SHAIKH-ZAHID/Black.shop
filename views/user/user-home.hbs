@@ -1,0 +1,576 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
+<link rel="stylesheet" href="/assets/css/coursossel.css">
+
+
+
+
+<div class=" col-12  " style="height:48rem; ">
+<div class="slider js-slider col-12">
+  <div class="slider__inner js-slider__inner"></div>
+  
+  <div class="slide js-slide">
+    <div class="slide__content">
+      <figure class="slide__img js-slide__img">
+        {{#with banner.[0]}}
+        <img src="/{{this.bannerimg.[0]}}">
+        {{/with}}
+      </figure>
+       <figure class="slide__img js-slide__img">
+        {{#with banner.[0]}}
+        <img src="/{{this.bannerimg.[1]}}">
+        {{/with}}
+      </figure>
+    </div>
+    
+    <div class="slider__text js-slider__text">
+      <div class="slider__text-line js-slider__text-line "><div>Black is</div></div>
+      <div class="slider__text-line js-slider__text-line"><div>timeless. Black is</div></div>
+      <div class="slider__text-line js-slider__text-line"><div>the colour of</div></div>
+      <div class="slider__text-line js-slider__text-line"><div>Eternity.</div></div>
+    </div>
+    
+  </div>
+  
+  <div class="slide js-slide">
+    <div class="slide__content">
+      <figure class="slide__img js-slide__img">
+        {{#with banner.[1]}}
+        <img src="/{{this.bannerimg.[0]}}">
+      </figure>
+       <figure class="slide__img js-slide__img">
+        <img src="/{{this.bannerimg.[1]}}">
+      </figure>
+    </div>
+
+  <div class="slider__text js-slider__text">
+      <div class="slider__text-line js-slider__text-line "><div>{{this.title}}</div></div>
+      <div class="slider__text-line js-slider__text-line"><div>{{this.subTitle}}</div></div>
+  </div>
+    {{/with}}
+  </div>
+  
+  <div class="slide js-slide">
+    <div class="slide__content">
+      <figure class="slide__img js-slide__img">
+     {{#with banner.[2]}}
+        <img src="/{{this.bannerimg.[0]}}">
+      </figure>
+       <figure class="slide__img js-slide__img">
+        <img src="/{{this.bannerimg.[1]}}">
+      </figure>
+    </div>
+     <div class="slider__text js-slider__text">
+      <div class="slider__text-line js-slider__text-line "><div>{{this.title}}</div></div>
+      <div class="slider__text-line js-slider__text-line"><div>{{this.subTitle}}</div></div>
+  </div>
+    {{/with}}
+  </div>
+  
+  <nav class="slider__nav js-slider__nav">
+    <div class="slider-bullet js-slider-bullet">
+      <span class="slider-bullet__text js-slider-bullet__text">01</span>
+      <span class="slider-bullet__line js-slider-bullet__line"></span>
+    </div>
+     <div class="slider-bullet js-slider-bullet">
+      <span class="slider-bullet__text js-slider-bullet__text">02</span>
+      <span class="slider-bullet__line js-slider-bullet__line"></span>
+    </div>
+     <div class="slider-bullet js-slider-bullet">
+      <span class="slider-bullet__text js-slider-bullet__text">03</span>
+      <span class="slider-bullet__line js-slider-bullet__line"></span>
+    </div>
+  </nav>
+  
+  <div class="scroll js-scroll"></div>
+  
+</div>
+
+<div class="vert-text">
+  <span>
+    Wings+Horns<br>
+    X Kyoto Black
+  </span>
+</div>
+</div>
+
+
+
+
+<!--  SignUp  -->
+
+
+<!-- Carousel wrapper -->
+{{!-- <div id="carouselDarkVariant" class="carousel slide carousel-fade carousel-dark" data-mdb-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      data-bs-target="#carouselDarkVariant"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      data-bs-target="#carouselDarkVariant"
+      data-bs-slide-to="1"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      data-bs-target="#carouselDarkVariant"
+      data-bs-slide-to="2"
+      aria-label="Slide 1"
+    ></button>
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner  rounded-2 shadow-4-strong">
+    <!-- Single item -->
+    {{#each banner}}
+    <div class="carousel-item custom-corousel {{#if @first}} active {{/if}}" style="height: 100vh;">
+      <img src="/{{this.bannerimg.[0]}}" class="d-block w-100" alt="Motorbike Smoke"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{this.title}}</h5>
+        <p>{{this.subTitle}}</p>
+      </div>
+    </div>
+
+
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselDarkVariant" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselDarkVariant" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  {{/each}}
+</div>
+<!-- Carousel wrapper --> --}}
+
+
+
+
+
+
+
+
+<!--  Product  -->
+
+<div class="container" style="position: relative;" >
+    <div class="row">
+        {{#each product}}
+        <div class="col-md-3 col-6 mt-1">
+             <pre> <a style="display: none;">{{this.pro_name}}</a></pre>
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="/singleProduct/{{this._id}}" class="image">
+                        <img class="pic-1" src="/{{this.myimg.[0]}}">
+                    </a>
+                    <ul class="social">
+                        {{!-- <li><a href=""><i class="fa fa-search"></i></a></li> --}}
+                        <li><a onclick="addToCart('{{this._id}}')" ><i class="fas fa-shopping-cart"></i></a></li>
+                        <li><a onclick="wishlist('{{this._id}}')" ><i class="fas fa-heart"></i></a></li>
+                   </ul>
+                </div>
+                <div class="product-content d-flex justify-content-between">
+                    <div class="title"><a></a>{{this.pro_name}}</a></div> 
+                    <div class="price">&#8377;{{this.price}}</div>
+                </div>
+            </div>
+        </div>
+        
+        {{/each}}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Start Banner Hero -->
+{{!-- <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/banner_img_01.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left align-self-center">
+                            <h1 class="h1 text-success"><b>Zay</b> eCommerce</h1>
+                            <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
+                            <p>
+                                Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1).
+                                This template is 100% free provided by <a rel="sponsored" class="text-success"
+                                    href="https://templatemo.com" target="_blank">TemplateMo</a> website.
+                                Image credits go to <a rel="sponsored" class="text-success"
+                                    href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
+                                <a rel="sponsored" class="text-success" href="https://unsplash.com/"
+                                    target="_blank">Unsplash</a> and
+                                <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons
+                                    8</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/banner_img_02.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1">Proident occaecat</h1>
+                            <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                            <p>
+                                You are permitted to use this Zay CSS template for your commercial websites.
+                                You are <strong>not permitted</strong> to re-distribute the template ZIP file in any
+                                kind of template collection websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="./assets/img/banner_img_03.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1">Repr in voluptate</h1>
+                            <h3 class="h2">Ullamco laboris nisi ut </h3>
+                            <p>
+                                We bring you 100% free CSS templates for your websites.
+                                If you wish to support TemplateMo, please make a small contribution via PayPal or tell
+                                your friends about our website. Thank you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+        role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+        role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+    </a>
+</div> --}}
+<!-- End Banner Hero -->
+
+
+<!-- Start Categories of The Month -->
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">CATEGORIES</h1>
+            <p>
+               Black is not A Color Its a Lifestyle
+            </p>
+        </div>
+    </div>
+    <div class="row">
+            {{#with category.[1]}}
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="/category/{{this._id}}"><img src="/product-images/zara6.jpg" class=" img-fluid border"></a>
+            <p class="text-center mt-3 mb-3 h4" href="/category/{{this._id}}">{{this.categoryname}}</p>
+               
+        </div>
+            {{/with}}
+        <div class="col-12 col-md-4 p-5 mt-3">
+           <img src="/product-images/NewBLACK-logos_black.png" class=" img-fluid "> 
+        </div>
+             {{#with category.[0]}}
+        <div class="col-12 col-md-4 p-5 mt-3">
+            <a href="/category/{{this._id}}"><img src="/product-images/images-myimg-1661184766192.jpeg" class=" img-fluid border"></a>
+            <p class="text-center mt-3 mb-3 h4" href="/category/{{this._id}}">{{this.categoryname}}</p>
+        </div>
+            {{/with}}
+    </div>
+   
+
+</section>
+<!-- End Categories of The Month -->
+
+
+<!-- Start Featured Product -->
+{{!-- <section class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Featured Product</h1>
+                <p>
+                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                            </li>
+                            <li class="text-muted text-right">$240.00</li>
+                        </ul>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
+                            deserunt.
+                        </p>
+                        <p class="text-muted">Reviews (24)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                            </li>
+                            <li class="text-muted text-right">$480.00</li>
+                        </ul>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                        <p class="card-text">
+                            Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo
+                            ullamcorper.
+                        </p>
+                        <p class="text-muted">Reviews (48)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100">
+                    <a href="shop-single.html">
+                        <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                            </li>
+                            <li class="text-muted text-right">$360.00</li>
+                        </ul>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                        <p class="card-text">
+                            Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque
+                            ipsum lobortis nec.
+                        </p>
+                        <p class="text-muted">Reviews (74)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+<!-- End Featured Product -->
+
+    <!-- Start Footer -->
+
+    <div class=" footer-container">
+    <div class="container ">
+        <footer class="pt-3">
+        <div class="row">
+
+            <div class="footer-list footer-list-newsletter col-12  col-md-4 mb-3">
+            <form action="/" >
+                <p class="mb-5 pt-2 text-uppercase">Newsletter</p>
+                <p class=" mb-3">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <div class="form-floating">
+                <input type="email" class="form-control mb-3" name='email' id="subscribeInput" placeholder=" ">
+                <label for="subscribeInput">Enter you email address</label>
+                </div>
+                <button class="w-50 btn btn-subscribe" type="submit" id="subscribeButton">SUBSCRIBE</button>
+            </form>
+            </div>
+
+            <div class="footer-list col-3  ms-5 col-md-2 mb-3">
+            <p class="mb-4 text-uppercase">Shop</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">Shirt</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Jeans</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Skirt</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Hoodie</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Trowsers</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Jackets</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Cargos</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Tops</a></li>
+            </ul>
+            </div>
+
+            <div class="col-3 col-md-2 mb-3 ms-md-5 ms-4 p-0">
+            <p class="mb-4 text-uppercase">Support</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">FAQs</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Shipping</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Warranty Policy</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Returns & Exchanges</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Contact Us</a></li>
+            </ul>
+            </div>
+
+            <div class="col-3 col-md-2 mb-2 ms-md-5 ms-4 p-0">
+            <p class="mb-4 text-uppercase">Learn More</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">About Us</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Terms & Conditions</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Privacy Policy</a></li>
+            </ul>
+            </div>
+
+            <div class="col-12 mt-2 justify-content-center">
+            <p class="about-us text-start"><small>
+                <span class="text-uppercase">Black Store , This is a fully functional E-commerse Website  is made for studying purpose , is made using javascript and css3 and Bootstrap 5</span> 
+                
+                </small></p>
+            </div>
+
+
+        </div>
+
+        <div class="footer-list-connect d-flex flex-column flex-sm-row justify-content-between py-3 mt-2">
+
+            <div class="order-lg-2 order-md-1">
+            <ul class="list-unstyled d-flex ">
+                <li class="ms-3 me-4"><small>Connect Us</small></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
+                </a></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
+                </a></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
+                </a></li>
+            </ul>
+            </div>
+            <div class="order-lg-1 order-md-2">
+            <p class="copyright">&copy; 
+                <script>
+                document.write(new Date().getFullYear());
+                </script>
+                Blackstore.shop, Inc. All rights reserved.
+            </p>
+            </div>
+        </div>
+        </footer>
+    </div>
+    </div>
+    {{!-- /footer --}}
+
+    <script>
+
+
+
+
+    function search() {
+
+        var input, filter, ul, li, a, i, txtValue, f;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        console.log(filter)
+        ul = document.getElementById("myUL");
+        f = ul.getElementsByClassName('f')
+        li = ul.getElementsByTagName("pre");
+        console.log(li[1].getElementsByTagName("a"))
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+
+            txtValue = a.textContent || a.innerText;
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                f[i].style.display = "";
+            } else {
+                f[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+
+<link rel="stylesheet" href="/assets/css/navstick.css">
+
+<script>
+    $(function () {
+        var $registerForm = $("#registration")
+        if ($registerForm.length) {
+            $registerForm.validate({
+                rules: {
+                    name: {
+                        minlength: 4,
+                        required: true
+                    },
+                    email: {
+                        required: true
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 10
+                    },
+                    password: {
+                        minlength: 6
+                    },
+
+                }
+            })
+        }
+    })
+
+
+
+
+    
+</script>
+
+<!-- Start Script -->
+{{!--
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script> --}}
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/templatemo.js"></script>
+<script src="/assets/js/custom.js"></script>
+<!-- End Script -->

@@ -1,0 +1,156 @@
+   {{!-- <style>
+        .img-container {
+            position: relative;
+        }
+
+        .image {
+            transition: .5s ease;
+            
+        }
+
+        .overlay {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .img-container:hover .image {
+            opacity: 0.9;
+        }
+
+        .img-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .card {
+            border-radius: 4px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+            transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+            cursor: grab;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition-duration: .5s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+        }
+
+        .gallery {
+            padding-top: 5%;
+        }
+        
+    </style>
+
+    <div class="tag pt-2 mt-3">
+        <p>Wishlist</p>
+    </div>
+
+     <section class="gallery">
+        <div class="container-fluid">
+            <div class="row">
+                {{#each wishlist.wishlist}}
+                
+                <div class="col-lg-3 col-sm-6 mb-3 ">
+                    <div class="card">
+                        <div class="img-container">
+                            <img src='/{{this.product.myimg.[0]}}' alt="" class="image card-img-top">
+                            <div class="overlay text-nowrap">
+                                <button class="btn btn-outline-secondary btn-sm"><i
+                                        class="fas fa-cart-plus mr-2"></i>Add to Cart</button>
+                                 <button  class="btn btn-outline-secondary btn-sm" onclick="removeFromWishlist('{{this.product._id}}')"><i class="far fa-heart"></i></buttons> 
+                            </div>                                                                            
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.product.pro_name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">&#8377;{{this.product.price}}</h6>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section> --}}
+
+   
+ <div class="d-flex justify-content-between px-5 mt-5">
+    <div class="d-flex justify-content-start">
+<p class="no-decoration h2 small px-5">WISHLIST</p>
+</div>
+   <div class="d-flex align-items-end flex-column col-md-px-5">
+   
+
+    </div>
+    
+    </div>
+ </div>
+ 
+
+    <div class="container mt-5">
+    <div class="row">
+      {{#each wishlist.wishlist}}
+                
+        <div class="col-md-2 col-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="/singleProduct/{{this.product._id}}" class="image">
+                        <img class="pic-1"src='/{{this.product.myimg.[0]}}' >
+                    </a>
+                  
+                </div>
+                <div class="product-content  d-flex justify-content-between">
+                    <h3 class="title"><a href="#"></a>{{this.product.pro_name}}</a></h3>
+                     <h3 class="title"><a href="#"></a>{{this.product.price}}</a></h3>
+                </div><div class="product-content pb-5 d-flex justify-content-between">
+                    <button onclick="addToCart('{{this.product._id}}')" class="btn btn-outline-secondary btn-sm "><i
+                                        class="fas fa-cart-plus mr-2"></i> Add to Cart</button>
+                                        <button  class="btn btn-outline-secondary btn-sm" onclick="removeFromWishlist('{{this.product._id}}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+</svg></buttons>
+                </div>
+            </div>
+        </div>
+        
+        {{/each}}
+    </div>
+</div>
+
+
+    <script>
+     const removeFromWishlist =  (id) =>{
+        swal({
+      title: "Are you sure?",
+      text: "Remove item From Wishlist !",
+      icon: "warning",
+      buttons: true,
+      className: "swal-delete",
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          await axios.post(`/RemoveFromWishlist/${id}`,{}).then((e)=>{
+            window.location.reload()
+
+        })
+
+          swal("Poof! Your  file has been deleted!", {
+            icon: "success",
+            className: "swal-delete",
+            button: false,
+            timer: 7000,
+          });
+          window.location.reload()
+        } else {
+          swal({
+            text: "Your  Product is safe!",
+            className: "swal-delete",
+            button: false,
+            timer: 700,
+          });
+        }
+      });
+      
+        }
+    </script>

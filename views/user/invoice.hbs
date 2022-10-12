@@ -1,0 +1,122 @@
+
+
+<div class="container d-flex justify-content-between mt-5" id="invoice">
+
+
+    <div class="row col-12">
+        <div class="d-flex justify-content-center h2">Tax Invoice</div><div class="container">
+<button class="btn p-0 btn-icon-text" onclick="printInvoice('invoice')"><i class="fa-solid fa-print"></i>
+            Invoice</button>
+            </div>
+        {{!-- <h1 class="d-flex align-items-center"><u>Tax Invoice</u><span><h6>Black online shopping</h6></span></h1><br>         --}}
+
+      <div class="container border d-flex">
+
+       <div class="col-6 border-end pt-2">
+        <h4>Black Fashion Store Limited Company  &NonBreakingSpace;</h4> 
+
+                <p class="d-flex text-nowrap">No BP-Vll 148 Z,P,O Jaipur , 
+                    <br>
+                    Jaisalmeer,Rajastan 899342 <br>
+            
+                 Mob:9207783535 <br>
+                ICIC:22485988477323 <br>
+                IFSC:ICIC0002244 <br>
+                GSTIN/U:8AQMPM6569N1Z2<br>
+                State Name:Rajastan Code:8</p>
+
+                <p class="border-top"> Consignee <br>
+                <span class="nav-link h1 font-weight-bold">{{order.deliveryDetails.Name}}</span>
+                {{order.deliveryDetails.Address1}} <br>
+                {{order.deliveryDetails.City}},{{order.deliveryDetails.pincode}} <br>
+                {{order.deliveryDetails.District}},{{order.deliveryDetails.State}}</p>
+       </div>
+       <div class="d-flex col-6 border-botom pt-2">
+        <div class="col-6 border-end">Invoice no.
+            <p>{{slices order._id}}</p>
+            <p class="border-top">Delivery Note</p>
+            <br>
+             <p class="border-top">Dispatch Through <br> Fed-X</p>
+              
+        </div>
+        <div class="col-6">Dated
+        <p>{{date order.updatedAt}}</p>
+         <p class="border-top">Mode Of Payment <br> {{order.paymentDetails}}</p>
+         <p class="border-top">Mode Of Payment <br> {{order.paymentDetails}}</p>
+            <br>
+            </div>
+       </div>
+
+      </div>
+     
+
+      
+         <table class="table  border " style="width:100%" id="example">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-transform:capitalize;">SL No.</th>
+                    <th scope="col" style="text-transform:capitalize;">Description Of Product</th>
+                    <th scope="col" style="text-transform:capitalize;">HSN/SAC</th>
+                    <th scope="col" style="text-transform:capitalize;">Quantity</th>
+                    <th scope="col" style="text-transform:capitalize;">Rate</th>
+                    <th scope="col" style="text-transform:capitalize;">TOTAL</th>
+             
+                </tr>
+            </thead>
+               <tbody>
+            {{#each order.orderItems}}
+                <tr>
+                    <td>{{inc1 @index}}</td>
+                    <td>{{this.product.pro_name}}</td>
+                    <td>2398</td>
+                    <td>{{this.quantity}}</td>
+                    <td>₹{{this.product.price}}</td>
+                     <td></td>
+                </tr>
+                {{/each}}
+                <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                  <td> ₹{{order.totalPrice}}</td>
+            </tbody>
+
+        </table>
+
+       <div class="d-flex justify-content-center text-muted "><small>This is a Computer generated Invoice</small>  </div>
+     
+    </div>
+</div>
+
+
+        
+
+       
+       
+       
+       
+
+
+
+
+
+<script>
+    function printInvoice(tagId) {
+    let hashId = "#" + tagId;
+    let tagname = $(hashId).prop("tagName").toLowerCase();
+    let attributes = "";
+    let attrs = document.getElementById(tagId).attributes;
+    $.each(attrs, function (i, elem) {
+        attributes += " " + elem.name + " ='" + elem.value + "' ";
+    })
+    let divToPrint = $(hashId).html();
+    let head = "<html><head>" + $("head").html() + "</head>";
+    let allContent = head + "<body  onload='window.print()' >" + "<" + tagname + attributes + ">" + divToPrint + "</" + tagname + ">" + "</body></html>";
+    let newWin = window.open('', 'Print-Window');
+    newWin.document.open();
+    newWin.document.write(allContent);
+    newWin.document.close();
+    setTimeout(function () { newWin.close(); }, 1000);
+}
+</script>

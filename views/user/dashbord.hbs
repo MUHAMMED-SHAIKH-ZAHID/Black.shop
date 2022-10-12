@@ -1,0 +1,622 @@
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="/assets/css/userdashbord.css">
+
+<section style="background-color: ;">
+  <div class="container py-5">
+    {{!-- <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+      </div>
+    </div> --}}
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            {{#if users.userimg}}
+            <div class="image my-4 ms-3">
+              <a href="#">
+                <img src="{{users.userimg}}"
+                  style="border-radius: 50% !important; width: 10rem; height:10rem ; object-fit: cover;">
+              </a>
+            </div>
+            {{else}}
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            {{/if}}
+            <h5 class="my-3"> {{users.firstname}}{{users.lastname}}</h5>
+            <p class="text-muted mb-1">{{users.email}}</p>
+            <p class="text-muted mb-4">{{users.mobile}}</p>
+            <div class="d-flex justify-content-center mb-2">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li onclick="overview()" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                <iconify-icon icon="mdi-light:view-dashboard" width="20" flip="horizontal" class="me-2"></iconify-icon>
+                <a class="mb-0">Overview</a>
+              </li>
+              <li onclick="profile()" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                <iconify-icon icon="system-uicons:user-male-circle" width="20" flip="horizontal" class="me-4">
+                </iconify-icon>
+                <p class="mb-0">Profile</p>
+              </li>
+              <li onclick="orders()" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                <iconify-icon icon="ph:package-light" width="20" class="me-3"></iconify-icon>
+                <p class="mb-0">Orders</p>
+              </li>
+              <li onclick="Address()" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                <iconify-icon icon="ep:map-location" width="20" class="me-3"></iconify-icon>
+                <p class="mb-0">Address</p>
+              </li>
+              <a href="/logout" class="list-group-item d-flex justify-content-center align-items-center p-3">
+                <iconify-icon icon="clarity:logout-line" width="20" flip="horizontal" class="me-4"></iconify-icon>
+                <p class="mb-0">Logout</p>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8  content card-container">
+        <div class="row row-cols-1 row-cols-md-2 g-3" id="dashbord">
+          <div class="col ">
+            <div class="card h-100">
+              <a onclick="orders()">
+                <div class="card-body text-center my-5">
+                  <iconify-icon icon="ph:package-light" width="32"></iconify-icon>
+                  <h6 class="card-title mt-3">Orders</h6>
+                  <p class="card-text text-muted small">Check your order status</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col ">
+            <div class="card h-100">
+              <a href="/showWishlist">
+                <div class="card-body text-center my-5">
+                  <iconify-icon icon="clarity:heart-line" width="32"></iconify-icon>
+                  <h6 class="card-title mt-3">Wishlist </h6>
+                  <p class="card-text text-muted small">All your curated product collections</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col ">
+            <div class="card h-100 ">
+              <a href="/ShowCart">
+                <div class="card-body text-center my-5">
+                  <iconify-icon icon="bi:bag" width="32"></iconify-icon>
+                  <h6 class="card-title mt-3">Cart </h6>
+                  <p class="card-text text-muted small">Products waiting for you</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col ">
+            <div class="card h-100 ">
+              <a onclick="Address()">
+                <div class="card-body text-center my-5">
+                  <iconify-icon icon="ep:map-location" width="32"></iconify-icon>
+                  <h6 class="card-title mt-3">Addresses </h6>
+                  <p class="card-text text-muted small">Save addresses for a hassle-free checkout</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 ">
+              <div class="card-body text-center my-5">
+                <iconify-icon icon="carbon:password" width="32"></iconify-icon>
+                <h6 class="card-title mt-3">Manage Password</h6>
+                <p class="card-text text-muted small">Edit and manage your password</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <a onclick="profile()">
+                <div class="card-body text-center my-5">
+                  <iconify-icon icon="carbon:order-details" width="32"></iconify-icon>
+                  <h6 class="card-title mt-3">Profile Details</h6>
+                  <p class="card-text text-muted small">View and Edit your profile details</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-3" id="profile" hidden>
+            <div class="border w-100 mb-4">
+             <form action="/updateUser" id="profilevalid" method="POST" enctype="multipart/form-data">
+
+              <header class="d-flex justify-content-between">
+                <div class="d-flex ">
+                  <div class="image my-4 ms-5">
+                    <a href="">
+                       {{#if users.userimg}}
+                      <img src="{{users.userimg}}"
+                        style="border-radius: 10% !important; width: 6rem; height:12rem ; object-fit: cover;">
+                        {{else}}
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+              {{/if}}
+                    </a>
+                  </div>
+                  <div class="my-auto  ">
+                    <h5 class="mt-4 mb-1">
+                      {{users.firstname}}{{users.lastname}}
+                    </h5>
+                    <p class="small mb-4 pb-2">{{users.email}}</p>
+                  </div>
+                </div>
+                <div class="mt-auto mb-3">
+                  <input type="file" hidden name="userimg" multiple id="userimg">
+                  <label for="userimg">
+                    <iconify-icon icon="clarity:note-edit-line" width="24" title="change your profile picture"
+                      style="color: black; cursor: pointer;"></iconify-icon>
+                  </label>
+                </div>
+              </header>
+            
+            <div class="border pt-3  w-100 " style="padding-left: 20% ;padding-right: 20% ;">
+
+              <div class="form- mb-3">
+                <input type="text" class="form-control " name='firstname' value="{{users.firstname}}" id="firstname"
+                  placeholder=" ">
+                <label for="firstname">First Name
+                </label>
+              </div>
+              <div class="form- mb-3">
+                <input type="text" class="form-control " name='lastname' value="{{users.lastname}}" id="LastName"
+                  placeholder=" ">
+                <label for="LastName">Last Name
+                </label>
+              </div>
+              <div class="form- mb-3">
+                <input type="text" class="form-control " name='alternatemobile' value="{{users.alternatemobile}}"
+                  id="MobileNumber" placeholder=" " required minlength="10" maxlength="10" pattern="\d{10}"
+                  title="Please enter a Valid 10 digit Mobile Number">
+                <label for="MobileNumber"> Alternative Mobile Number
+                </label>
+              </div>
+              <div class="form- mb-3">
+                <input type="date" class="form-control " name='DOB' value="{{users.DOB}}" id="DateOfBirth"
+                  placeholder=" ">
+                <label for="DateOfBirth">Date of Birth
+                </label>
+              </div>
+              <div class="form- mb-3">
+                <input type="text" class="form-control " name='email' value="{{users.email}}" id="Location"
+                  placeholder=" ">
+                <label for="Location">Email
+                </label>
+              </div>
+              <div class=" d-flex justify-content-center ">
+                <div class=" col-12 ">
+                  <div class=" ">
+                    <div class=" px-0 align-self-center mb-3 ">
+                      <div class=" d-flex justify-content-center">
+                        <button type="submit" class=" btn w-100 py-2 my-2  ">SAVE</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 g-3" id="orders" hidden>
+
+          <div class=" col-12 col-lg-12 ps-lg-5 ps-4 card-container-fluid ">
+
+
+            <div class="row row-cols-1 p-0 profile-header">
+              {{#each order}}
+              <div class="row row-cols-1 mt-2">
+
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex ">
+                    <p class="text-muted small ps-0 mb-2">Order ID : {{ this._id}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <p class="text-secondary small ps-0 mb-2">{{dateFormat this.updatedAt}}</p>
+                  </div>
+                </div>
+                <div class="border pt-2 pb-2 order-box" style="background-color: #F2F2F2;">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex pt-1"><a href="/orderDetails/{{this._id}}" class="btn btn-outline-dark">Track</a>
+                    </div>
+                    {{#if (eq this.deliveryStatus 'Cancelled')}}
+                    <h6 class="mob-text text-danger pt-3"> {{this.deliveryStatus}}</h6>
+                    {{/if}}
+                    {{#if (eq this.deliveryStatus 'Delivered')}}
+                    <h6 class="mob-text text-success pt-3"> {{this.deliveryStatus}}</h6>
+                    {{/if}}
+                    {{#if (eq this.deliveryStatus 'processing')}}
+                    <h6 class="mob-text text-mute pt-3"> {{this.deliveryStatus}}</h6>
+                    {{/if}}
+                    {{#if (eq this.deliveryStatus 'OutForDelivery')}}
+                    <h6 class="mob-text text-warning pt-3"> {{this.deliveryStatus}}</h6>
+                    {{/if}}
+                    {{#if (eq this.deliveryStatus 'shipped')}}
+                    <h6 class="mob-text text-secondary pt-3"> {{this.deliveryStatus}}</h6>
+                    {{/if}}
+                  </div>
+                </div>
+
+
+                <div class="border mb-4 order-box">
+                  {{#each this.orderItems}}
+
+                  <div class="row d-flex justify-content-center border-top px-4 bg-white">
+                    <div class="col-9 px-0">
+                      <div class="d-flex justify-content-start">
+                        <div class="book">
+                          <a href="#">
+                            <img src="{{this.product.myimg.[0]}}" class="book-img">
+                          </a>
+                        </div>
+                        <div class="my-auto flex-column d-flex">
+                          <a href="/singleProduct/{{this.product._id}}">
+                            <h6 class="mb-0 ">{{this.product.pro_name}}</h6>
+                          </a>
+                          <p class="pt-2"><small>{{this.quantity}} </small></p>
+
+                          <h6 class=" pt-1">₹{{this.product.price}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="my-auto col-3 ">
+                      <div class="row ">
+                        <div class="col-12 px-0 text-end align-self-center">
+                          {{!-- <h6 class="mob-text"> {{../this.deliveryStatus}}</h6> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-3" id="Address" hidden>
+
+
+          <div class=" col-12 col-lg-12 ps-lg-5 card-container-fluid ">
+
+
+
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col-12 pb-1 w-100">
+                <div class="label-box col-12">
+                  <button type="button" hidden id="newAddressButton" data-bs-toggle="modal"
+                    data-bs-target="#addNewAddress">
+                  </button>
+
+                  <label for="newAddressButton" class="new-address col-12">
+                    <div class="address border px-3 py-2 new-box">
+                      <div class=" my-5 d-flex align-items-center justify-content-center  active">
+                        <iconify-icon icon="ep:map-location" width="24"></iconify-icon>
+                        <h3 class="me-2 plus-button"><sup>+</sup></h2>
+                          <strong>Add new address</strong>
+                      </div>
+                    </div>
+                  </label>
+
+                  <!-- add new address modal -->
+                  <div class="modal fade" id="addNewAddress" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header my-3 ">
+                          <p class="ms-4 ps-2 mt-2" id="staticBackdropLabel">ADD NEW ADDRESS</p>
+                          <button type="button" class="btn-close me-4 pe-2" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-5">
+                          <form action="/addAddress" method="POST" id="addAddress" name="registration">
+
+                            <div class="d-flex form--double justify-content-between">
+                              <div class="form- col-12 mb-3">
+                                <input type="text" class="form-control " name='Name' id="FirstName" placeholder="Name">
+                              </div>
+
+                            </div>
+
+                            <div class="form- mb-3">
+                              <input type="text" class="form-control " name='mobile' id="MobileNumber"
+                                placeholder="Mobile " minlength="10" maxlength="10" pattern="\d{10}"
+                                title="Please enter a Valid 10 digit Mobile Number">
+                              <label for="MobileNumber">
+                              </label>
+                            </div>
+
+                            <div class="form- mb-3">
+                              <input type="text" class="form-control " name='Address1' id="Address"
+                                placeholder=" Address">
+                            </div>
+                            <div class="form mb-3">
+                              <input type="text" class="form-control " name='landmark' id="Input"
+                                placeholder="Landmark ">
+                            </div>
+                            <div class="d-flex form--double justify-content-between">
+                              <div class="form- col-6 mb-3">
+                                <input type="text" class="form-control " name='City' id="City" placeholder="City ">
+                                <label for="City">
+                                </label>
+                              </div>
+                              <div class="form- col-6 mb-3">
+                                <input type="number" class="form-control " name='pincode' id="Pincode"
+                                  placeholder="Pincode " minlength="6" maxlength="6" pattern="\d{10}"
+                                  title="Please enter Valid 6 digit PIN code">
+                                </label>
+                              </div>
+                            </div>
+                            <div class="d-flex form--double justify-content-between">
+                              <div class="form col-6 mb-3">
+                                <input type="text" class="form-control " name='District' id="District"
+                                  placeholder=" District ">
+                                </label>
+                              </div>
+                              <div class="form col-6 mb-3">
+                                <input type="text" class="form-control " name='State' id="State" placeholder=" State">
+
+                              </div>
+                            </div>
+                            <div class="btn-group col-12 d-flex" role="group"
+                              aria-label="Basic radio toggle button group">
+
+                              <input type="radio" class="btn-check" value="Home" name="Type" id="btnradio1"
+                                autocomplete="off" checked>
+                              <label class="btn btn-outline-dark" for="btnradio1">HOME</label>
+
+                              <input type="radio" class="btn-check" value="Office" name="Type" id="btnradio2"
+                                autocomplete="off">
+                              <label class="btn btn-outline-dark" for="btnradio2">OFFICE</label>
+
+                              <input type="radio" class="btn-check" value="College" name="Type" id="btnradio3"
+                                autocomplete="off">
+                              <label class="btn btn-outline-dark" for="btnradio3">COLLEGE</label>
+
+
+                              <input type="radio" class="btn-check" value="Other" name="Type" id="btnradio4"
+                                autocomplete="off">
+                              <label class="btn btn-outline-dark" for="btnradio4">OTHER</label>
+                            </div>
+                            <div class=" d-flex justify-content-center ">
+                              <div class=" col-12 ">
+                                <div class=" ">
+                                  <div class=" px-0 align-self-center my-3">
+                                    <div class=" d-flex justify-content-between">
+                                      <button type="button" class="btn btn-invert py-2 my-2"
+                                        data-bs-dismiss="modal">CANCEL</button>
+                                      <button type="submit" class=" btn py-2 my-2 ">SAVE ADDRESS</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{#each address}}
+              <div class="col-12 mb-1 w-100 ">
+                <div class="label-box">
+                  <div class="address border p-3 ">
+                    <div>
+
+                      <h6 class="pb-0">{{#spg this.Type "Home"}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-house text white" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                          <path fill-rule="evenodd"
+                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                        </svg>{{/spg}}
+                        {{#spg this.Type "Office"}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-building" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
+                          <path
+                            d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
+                        </svg>{{/spg}}
+                        {{#spg this.Type "College"}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-bank" viewBox="0 0 16 16">
+                          <path
+                            d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z" />
+                        </svg>{{/spg}} &nbsp;{{this.Name}}
+                      </h6 class="mb-2">
+                      {{this.Address1}} ,
+                      {{this.landmark}} <br>
+                      {{this.City}} ,
+                      {{this.pincode}} ,
+                      {{this.District}},
+                      {{this.State}} <br> <br>
+                      <div class="d-flex justify-content-between">
+                        Mobile : {{../users.mobile}} <br>
+
+                        <div class="d-flex justify-content-end">
+                          <button type="button" hidden id="editAddress-{{address.id}}" data-bs-toggle="modal"
+                            data-bs-target="#editAddress{{address.id}}">
+                          </button>
+
+                          {{!-- <label for="editAddress-{{address.id}}" class="action-address h1 me-2 small">
+                            <span>Edit</span>
+                          </label> --}}
+
+                          <a onclick="deleteAddress('{{this._id}}')" class="no-decoration h3 small">Delete</a>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+</section>
+<link rel="stylesheet" href="stylesheets/login.css" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<link rel="stylesheet" href="stylesheets/login.css" type="text/css">
+<script>
+
+   jQuery.validator.addMethod("lettersonly", function (value, element) {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Letters only please");
+
+    $.validator.addMethod("noCaps", function (value, element) {
+        return this.optional(element) || !/[A-Z]/.test(value);
+    }, "email can't have upper case letters");
+
+  $(document).ready(function () {
+    $('#addAddress').validate({
+      rules: {
+        Name: {
+          required: true,
+          lettersonly: true,
+        },
+        mobile: {
+          required: true,
+          number: true,
+          minlength: 10,
+          maxlength: 10,
+
+        },
+        Address1: {
+          required: true,
+        },
+        pincode: {
+          required: true,
+        },
+        District: {
+          required: true,
+        },
+        State: {
+          required: true,
+        },
+        pinCode: {
+          required: true,
+        }
+      }
+    })
+  })
+
+    $(document).ready(function () {
+    $('#profilevalid').validate({
+      rules: {
+        firstname: {
+          required: true,
+        },
+        email: {
+          email: true,
+          required: true,
+        }
+      }
+    })
+  })
+
+</script>
+<script>
+
+
+
+</script>
+
+<script>
+  function overview() {
+    $('#dashbord').attr("hidden", false)
+    $("#profile").attr("hidden", true);
+    $("#orders").attr("hidden", true);
+    $("#Address").attr("hidden", true);
+  }
+  function profile() {
+    $("#profile").attr("hidden", false);
+    $('#dashbord').attr("hidden", true)
+    $("#Address").attr("hidden", true);
+    $("#orders").attr("hidden", true);
+
+  }
+  function orders() {
+    $("#orders").attr("hidden", false);
+    $("#profile").attr("hidden", true);
+    $("#dashbord").attr("hidden", true);
+    $("#Address").attr("hidden", true);
+  }
+  function Address() {
+    $("#Address").attr("hidden", false);
+    $("#orders").attr("hidden", true);
+    $("#profile").attr("hidden", true);
+    $("#dashbord").attr("hidden", true);
+  }
+</script>
+
+<script>
+  const deleteAddress = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+
+
+          await axios.post(`/deleteAddress/${id}`, {}).then((e) => {
+            console.log(id)
+          })
+
+          swal("Poof! Your  file has been deleted!", {
+            icon: "success",
+
+            button: false,
+            timer: 7000,
+          });
+          window.location.reload()
+        } else {
+          swal({
+            text: "Your Address file is safe!",
+
+            button: false,
+            timer: 700,
+          });
+        }
+      });
+  }
+</script>

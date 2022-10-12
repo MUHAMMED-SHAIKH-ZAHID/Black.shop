@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="/assets/css/category.css">
+
+<div class="d-flex justify-content-between px-5 mt-3">
+    <div class="d-flex justify-content-start">{{#with product.[0]}}
+        <p class="no-decoration h2 small">{{this.Category.categoryname}}</p>
+        {{/with}}
+    </div>
+
+    <div class="d-flex align-items-end flex-column col-md-px-5">
+        <for class="search-bar">
+            <input type="text" id="myInput" name="search" pattern=".*\S.*" required onkeyup="search()">
+            <button class="search-btn text-white" type="submit" >
+                <span>Search</span>
+            </button>
+        </for>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<!--  Product  -->
+
+<div class="container">
+    <ule id="myUL">
+        <div class="row">
+            {{#each product}}
+            <div class="col-md-3 col-sm-6 pt-5 f">
+                <pre> <a style="display: none;">{{this.pro_name}}</a></pre>
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="/singleProduct/{{this._id}}" class="image">
+                            <img class="pic-1" src="/{{this.myimg.[0]}}">
+                        </a>
+                        <ul class="social">
+                            {{!-- <li><a href=""><i class="fa fa-search"></i></a></li> --}}
+                            <li><a onclick="addToCart('{{this._id}}')"><i class="fas fa-shopping-cart"></i></a></li>
+                            <li><a onclick="wishlist('{{this._id}}')"><i class="fas fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                         <div class="product-content d-flex justify-content-between">
+                    <div class="title"><a></a>{{this.pro_name}}</a></div> 
+                    <div class="price">&#8377;{{this.price}}</div>
+                </div>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+    </ule>
+</div>
+
+<script>
+
+
+
+
+    function search() {
+
+        var input, filter, ul, li, a, i, txtValue, f;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        console.log(filter)
+        ule = document.getElementById("myUL");
+        f = ule.getElementsByClassName('f')
+        li = ule.getElementsByTagName("pre");
+        console.log(li[1].getElementsByTagName("a"))
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+
+            txtValue = a.textContent || a.innerText;
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                f[i].style.display = "";
+            } else {
+                f[i].style.display = "none";
+            }
+        }
+    }
+</script>

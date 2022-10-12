@@ -1,0 +1,312 @@
+<link rel="stylesheet" href="/assets/css/checkout.css">
+
+
+    <div class="container">
+      <header class="principal d-flex justify-content-between">
+        
+       
+          <div class="list-inline-item">
+            <h3 class="font-weight-bold mb-0 d-block"> <button  style="text-decoration: none; color: black;" class="btn btn-secondary-outline" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+             
+          </div>
+      </header>
+      
+      
+      <div class="division">
+        <div class="row gx-0 w-100 border" style="border-radius: 1.5rem ;" >
+          <div class="row col-lg-8 col-12">
+             <div class="d-flex justify-content-between align-items-center mb-1 ">
+                    <h1 class="fw-bold mb-0 text-black">Checkout</h1>
+                    <h6 class="mb-0 text-muted" id="cart-count"> items</h6>
+              </div>
+               <hr class="m-0 p-0">
+
+                    <div class="accordion " id="accordionPanelsStayOpenExample">
+                            <label class="w-100 h-100" for="cod">
+                                <div class="accordion-item bgblack">
+                                    <h2 class="accordion-header bgblack" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button bgblack " type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                            aria-controls="panelsStayOpen-collapseOne">
+                                            ADDRESS
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+
+ <button type="button" hidden id="newAddressButton" data-bs-toggle="modal" data-bs-target="#addNewAddress">
+ </button>
+                                          <label for="newAddressButton" class="new-address col-12">
+ <div class="address border px-3 py-2 new-box">
+ <div class=" my-5 d-flex align-items-center justify-content-center  active">
+ <iconify-icon icon="ep:map-location" width="24"></iconify-icon>
+ <h3 class="me-2 plus-button"><sup>+</sup></h2>
+ <strong>Add new address</strong>
+ </div>
+ </div>
+ </label>
+ 
+                                        </div>
+                                    </div>
+                            </label>
+                        </div>
+                        <label class="w-100 h-100" for="razorpay">
+                        <div class="accordion-item bgblack">
+
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button bgblack  collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo">
+                                    View Saved Address
+                                </button>
+                            </h2>
+                            
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div class="accordion-body">
+                                        {{#each address}}
+ <div class="col-12 mb-1 w-100 ">
+    <label class="w-100 h-100">
+ <div class="label-box">
+ <div class="address border p-3 ">
+ <div>
+  <h6 class="pb-0">
+  <h5 class="title "><input type="radio" name="address" value="{{this._id}}" id="" {{#if
+                                                    @first}}checked{{/if}}>
+ {{#spg this.Type "Home"}}
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house text white" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+</svg>{{/spg}}
+{{#spg this.Type "Office"}}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+</svg>{{/spg}}
+{{#spg this.Type "College"}}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+  <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+</svg>{{/spg}} &nbsp;{{this.Name}}</h6 class="mb-1"></h5>
+  {{this.Address1}} ,
+{{this.landmark}}  <br>
+ {{this.City}} ,
+  {{this.pincode}} ,
+ {{this.District}},
+{{this.State}} <br> <br>
+ <div class="d-flex justify-content-between">
+ Mobile : {{users.mobile}} <br>
+ 
+
+ </div>
+
+ 
+ </div>
+ </div>
+ </div>
+ </label>
+ </div>
+ {{/each}}
+                                    </div>
+                                </div>
+                        </div>
+                     </label>
+                        
+                </div>
+                </label>
+
+
+
+          
+              </div>
+          <main class="grey col-lg-4 col-12 p-0 m-0 border" style="border-radius:.5rem ;">
+          <h4 class="d-flex justify-content-center text-dark fw-bold pt-3 mt-3">Order Details</h4>
+           <div class="container px-5">
+             <hr class="my-4">
+           </div>
+            <div class="d-flex flex-column">
+              <div class="cart-preview card-scroll ">
+                {{#each cartProducts.Cart}}
+                  <div class="cart-item">
+                    <img src="/{{this.product.myimg.[0]}}" alt="product" />
+                    <div>
+                      <div>
+                        <div class="name pt-2">Model :{{this.product.pro_name}}</div>
+                        <div class="price pt-2"><span class="discounted">&#8377; {{this.product.price}}</span><span</span></div>
+                                        <div class="name pt-2 ">Quantity :{{this.quantity}}</div>
+                      </div>
+                      {{!-- <div class="">
+                        <span class="material-icons">remove</span>
+                        <span class="qty">1</span>
+                        <span class="s">add</span>
+                      </div> --}}
+                    </div>
+                  </div>
+                {{/each}}
+          
+          
+              </div>
+                <div class="cart-preview">
+                  <div class="shipping">
+                    <span>Shipping:</span><span>&#8377; {{response.shiping}}</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Discount:</span><span> &#8377;{{response.discount}}</span>
+                  </div>
+                  <div class="total">
+                    <span>Total:</span><span style=" font-weight: 600;
+  text-decoration: none;
+  color: #141313;">&#8377; {{response.grandTotal}}</span>
+                  </div>
+                  <div class="d-flex justify-content-center pt-3">
+                      <button onclick="paymentMethod()"  class="btn btn-dark btn-block  btn-lg mt-3"
+                        data-mdb-ripple-color="dark">Payment</button>
+                    </div>
+                    
+                </div>
+            </div>
+          
+          </main>
+        </div>
+        
+      </div>
+ <!-- add new address modal -->
+ <div class="modal fade" id="addNewAddress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+ aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered">
+ <div class="modal-content">
+ <div class="modal-header my-3 ">
+ <p class="ms-4 ps-2 mt-2" id="staticBackdropLabel">ADD NEW ADDRESS</p>
+ <button type="button" class="btn-close me-4 pe-2" data-bs-dismiss="modal" aria-label="Close"></button>
+ </div>
+ <div class="modal-body px-5">
+ <form action="/addAddress1" method="POST" id="registration" name="registration" >
+
+  <div class="d-flex form-floating-double justify-content-between">
+ <div class="form-floating col-12 mb-3">
+ <input type="text" class="form-control " name='Name' id="floatingFirstName" placeholder=" " required>
+ <label for="floatingName">Name
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+
+ </div>
+
+ <div class="form-floating mb-3">
+ <input type="text" class="form-control " name='mobile' id="floatingMobileNumber" placeholder=" " required
+ minlength="10" maxlength="10" pattern="\d{10}" title="Please enter a Valid 10 digit Mobile Number">
+ <label for="floatingMobileNumber">Mobile Number
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+
+ <div class="form-floating mb-3">
+ <input type="text" class="form-control " name='Address1' id="floatingAddress" placeholder=" " required>
+ <label for="floatingAddress">Address
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+ <div class="form-floating mb-3">
+ <input type="text" class="form-control " name='landmark' id="floatingInput" placeholder=" ">
+ <label for="floatingInput">Landmark (optional)
+ </label>
+ </div>
+ <div class="d-flex form-floating-double justify-content-between">
+ <div class="form-floating col-6 mb-3">
+ <input type="text" class="form-control " name='City' id="floatingCity" placeholder=" " required>
+ <label for="floatingCity">City
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+ <div class="form-floating col-6 mb-3">
+ <input type="number" class="form-control " name='pincode' id="floatingPincode" placeholder=" " required
+ minlength="6" maxlength="6" pattern="\d{10}" title="Please enter Valid 6 digit PIN code">
+ <label for="floatingPincode">PIN code
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+ </div>
+ <div class="d-flex form-floating-double justify-content-between">
+ <div class="form-floating col-6 mb-3">
+ <input type="text" class="form-control " name='District' id="floatingDistrict" placeholder=" " required>
+ <label for="floatingCountry">District
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+ <div class="form-floating col-6 mb-3">
+ <input type="text" class="form-control " name='State' id="floatingState" placeholder=" " required>
+ <label for="floatingState">State
+ <span class="text-danger"><small> *</small></span>
+ </label>
+ </div>
+ </div>
+ <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                   
+                                    <input type="radio" class="btn-check" value="Home" name="Type" id="btnradio1"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-dark" for="btnradio1">HOME</label>
+
+                                    <input type="radio" class="btn-check" value="Office" name="Type" id="btnradio2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio2">OFFICE</label>
+
+                                    <input type="radio" class="btn-check" value="College" name="Type" id="btnradio3"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio3">COLLEGE</label>
+
+
+                                    <input type="radio" class="btn-check" value="Other" name="Type" id="btnradio4"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="btnradio4">OTHER</label>
+                                </div>
+ <div class=" d-flex justify-content-center ">
+ <div class=" col-12 ">
+ <div class=" ">
+ <div class=" px-0 align-self-center my-3">
+ <div class=" d-flex justify-content-between">
+ <button type="button" class="btn btn-invert py-2 my-2" data-bs-dismiss="modal">CANCEL</button>
+ <button type="submit" class=" btn py-2 my-2 ">SAVE ADDRESS</button>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+  
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+       
+      <footer class="principal"><p>created by <a href="#">BLACK</a> - </footer>
+    </div>
+ 
+
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+
+  <script>
+    function paymentMethod(){
+      console.log('hi')
+        let address = $('input[type="radio"][name="address"]:checked').val()
+        try{
+           axios.post(`/payment`,{
+            address: address
+          }).then((e)=>{
+            console.log(e.data)
+            location.href='/paymentMethod'
+          })
+        }catch(err){
+           console.log(err)
+        }
+    }
+  </script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,326 @@
+<link rel="stylesheet" href="/assets/css/orderdetails.css">
+
+
+
+<div class="d-flex flex-column justify-content-center align-items-center" id="order-heading">
+    <div class="text-uppercase">
+        <p>Order detail</p>
+    </div>
+   {{#if (eq order.deliveryStatus 'Delivered')}}
+    <a href="/invoice/{{order._id}}" class="h4 btn btn-outline-secondary">Invoice</a>
+    {{/if}}
+   {{!--  <div class="pt-1">
+        <p>Order #12615 is currently<b class="text-dark"> processing</b></p>
+    </div> --}}
+    {{!-- <div class="btn close text-dark"> &times; </div> --}}
+</div>
+
+<div class="wrapper bg-white">
+      <div class="row border rounded p-1 my-3">
+        <div class="col-md-6 col-6 py-3">
+            <div class="d-flex flex-column align-items start text-uppercase"> <b>Delivery Address</b>
+                <p class="text-justify pt-2"> {{order.deliveryDetails.Name}}</p>
+                <p class="text-justify">{{order.deliveryDetails.Address1}}</p>
+                <p class="text-justify">{{order.deliveryDetails.City}},{{order.deliveryDetails.pincode}}</p>
+                <p class="text-justify">{{order.deliveryDetails.District}},{{order.deliveryDetails.State}}</p>
+                <p class="text-justify ">&nbsp;</p>
+                <p class="text-justify "></p>
+            </div>
+        </div>
+        <div class="col-md-6 col-6 py-3">
+            <div class="d-flex flex-column align-items-end pe-2 text-uppercase"> <b>Order Status</b>
+                <p class="text-justify pt-2">&nbsp;</p>
+                 {{#if (eq order.deliveryStatus 'Cancelled')}}
+                <p class="text-justify text-danger">{{order.deliveryStatus}}</p>
+                {{/if}}
+                  {{#if (eq order.deliveryStatus 'processing')}}
+                <p class="text-justify text-mute">{{order.deliveryStatus}}</p>
+                {{/if}}
+                
+                  {{#if (eq order.deliveryStatus 'OutForDelivery')}}
+                <p class="text-justify text-warning">{{order.deliveryStatus}}</p>
+                {{/if}}
+                 {{#if (eq order.deliveryStatus 'Delivered')}}
+                <p class="text-justify text-success">{{order.deliveryStatus}}</p>
+                {{/if}}
+                   {{#if (eq order.deliveryStatus 'shipped')}}
+                <p id="deliverystatus" class="text-justify text-secondary">{{order.deliveryStatus}}</p>
+                {{/if}}
+                
+
+                  <p class="text-justify pt-2">&nbsp;</p>
+                  {{#if (eq order.deliveryStatus 'Cancelled')}}
+                  {{else}}
+                   <div id="cancelButton" onclick="cancelOrder('{{order._id}}')" class="text-justify text-danger">Cancel</div>
+                   {{/if}}
+            </div>
+        </div>
+    </div>
+
+     <div class="row border rounded p-1 my-3">
+        <div class="col-md-6  py-3">
+            <div class="d-flex flex-column align-items start text-uppercase"> <b>Order Details</b>
+                <p class="text-justify pt-2">ORDER ID: {{order._id}}</p>
+                <p class="text-justify">PLACED DATE:&NonBreakingSpace;{{date order.updatedAt}}</p>
+                 <p class="text-justify pt-2">&nbsp;</p>
+                <p class="text-justify pt-2">&nbsp;</p>
+                <h5 class="text-justify pt-2">TRACK YOUR ORDER    <i class="fas fa-shipping-fast fa-1x me-lg-4 mb-3 mb-lg-0"></i></h5>
+            </div>
+        </div>
+          {{#spg order.deliveryStatus 'processing'}}
+        <div class="col-12 mt-5 progress-Bar ps-5 pl-5 pt-4">
+            
+            <ul data-steps-completed="1" id="ul">
+              
+ 
+  <li class="li">Order Placed <span></span></li>
+  <li class="li">Shipped <span></span></li>
+  <li class="li">Out for Delivery<span></span> </li>
+  <li class="li">Delivered <span></span></li>
+  
+</ul> </div> {{/spg}}
+            {{#spg order.deliveryStatus 'shipped'}}
+        <div class="col-12 mt-5 progress-Bar ps-5 pl-5 pt-4">
+            
+            <ul data-steps-completed="2" id="ul">
+              
+ 
+  <li class="li">Order Placed <span></span></li>
+  <li class="li">Shipped <span></span></li>
+  <li class="li">Out for Delivery<span></span> </li>
+  <li class="li">Delivered <span></span></li>
+  
+</ul> </div> {{/spg}}
+
+       {{#spg order.deliveryStatus 'OutForDelivery'}}
+        <div class="col-12 mt-5 progress-Bar ps-5 pl-5 pt-4">
+            
+            <ul data-steps-completed="3" id="ul">
+              
+ 
+  <li class="li">Order Placed <span></span></li>
+  <li class="li">Shipped <span></span></li>
+  <li class="li">Out for Delivery<span></span> </li>
+  <li class="li">Delivered <span></span></li>
+  
+</ul> </div> {{/spg}}
+  {{#spg order.deliveryStatus 'Delivered'}}
+        <div class="col-12 mt-5 progress-Bar ps-5 pl-5 pt-4">
+            
+            <ul data-steps-completed="4" id="ul">
+              
+ 
+  <li class="li">Order Placed <span></span></li>
+  <li class="li">Shipped <span></span></li>
+  <li class="li">Out for Delivery<span></span> </li>
+  <li class="li">Delivered <span></span></li>
+  
+</ul> </div> {{/spg}}
+ {{#spg order.deliveryStatus 'Cancelled'}}
+        <div class="col-12 mt-5 progress-Bars ps-5 pl-5 pt-4">
+            
+            <ul data-steps-completed="4" id="ul">
+              
+ 
+  <li class="li text-danger">Order Placed <span></span></li>
+  <li class="li text-danger"> <span></span></li>
+  <li class="li text-danger"><span></span> </li>
+  <li class="li text-danger">Cancelled <span></span></li>
+  
+</ul> </div> {{/spg}}
+<div class="col-md-12  py-3 mt-5">
+            <div class="d-flex flex-column align-items fw-bold start text-uppercase"> <b>Payment Details</b>
+                <p class="text-justify pt-2 text-uppercase">Payment Method: {{order.paymentDetails}}</p>
+                <p class="text-justify text-uppercase">Payment Status:&NonBreakingSpace;{{order.deliveryStatus}}</p>
+                 <p class="text-justify pt-2">&nbsp;</p>
+                <p class="text-justify pt-2">&nbsp;</p>
+                <h5 class="text-justify pt-2"></h5>
+            </div>
+        </div>
+         <div class="col-md-6 col-6 ">
+            <div class="d-flex flex-column align-items start text-uppercase"> <b></b>
+              
+                <p class="text-justify">COUPON DISCOUNT</p>
+                <p class="text-justify">SHIPPING</p>
+                <p class="text-justify"></p>
+            </div>
+        </div>
+        <div class="col-md-6 col-6 ">
+            <div class="d-flex flex-column align-items-end pe-2 text-uppercase"> <b></b>
+             
+                <p class="text-justify">{{order.discount}}</p>
+                  <p class="text-justify pt-2">{{order.deliveryCharge}}</p>
+                   <p class="text-justify text-danger"></p>
+            </div>
+            
+        
+        </div>
+          <div class="col-md-6 col-6 border-top">
+              <div class="d-flex justify-content-start pl-3 py-3 mb-4 "><p class="ptext-justify">Total</p>
+    </div>
+          </div>
+       
+        <div class="col-md-6 col-6 border-top">
+            <div class="d-flex align-items-end flex-column  ">
+                 <p class="text-justify pt-3">{{order.totalPrice}}</p> </div>
+        </div>
+
+       
+    </div>
+    
+
+    
+    
+    
+    
+    <div class="table-responsive">
+        <table class="table table-borderless">
+            <thead>
+                <tr class="text-uppercase text-muted">
+                    <th scope="col">product details</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </table>
+    </div>
+    
+      <div class="border mb-4 order-box card pad-left"
+                >
+                    {{#each order.orderItems}}
+              
+                  <div class="row d-flex justify-content-center border-top px-4 bg-white">
+                    <div class="col-9 px-0">
+                      <div class="d-flex justify-content-start">
+                        <div class="book">
+                          <a href="#">
+                            <img src="/{{this.product.myimg.[0]}}" class="book-img">
+                          </a>
+                        </div>
+                        <div class="my-auto flex-column d-flex">
+                          <a>
+                            <h6 class="mb-0 ps-4 ">MODEL:{{this.product.pro_name}}</h6>
+                          </a>
+                         <p class="pt-3 ps-4"><small>QUANTITY:{{this.quantity}} </small></p>
+                        
+                          <h6 class="  ps-4">₹{{this.product.price}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="my-auto col-3 ">
+                      <div class="row ">
+                        <div class="col-12 px-0 text-end align-self-center">
+                          {{!-- <h6 class="mob-text">  {{../this.deliveryStatus}}</h6> --}}
+                          </div>
+                           </div>       
+                            </div>
+                             </div>
+                             {{/each}}
+                             
+                </div>
+   
+    {{!-- <div class="pt-2 border-bottom mb-3"></div>
+    <div class="d-flex justify-content-start align-items-center pl-3">
+        <div class="text-muted">Payment Method</div>
+        <div class="ml-auto"> <img src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt="" width="30" height="30"> <label>Mastercard ******5342</label> </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted">Shipping</div>
+        <div class="ml-auto"> <label>Free</label> </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center pb-4 pl-3 border-bottom">
+        <div class="text-muted"> <button class="text-white btn">50% Discount</button> </div>
+        <div class="ml-auto price"> -$34.94 </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center pl-3 py-3 mb-4 border-bottom">
+        <div class="text-muted"> Today's Total </div>
+        <div class="ml-auto h5"> $34.94 </div>
+    </div>
+    <div class="row border rounded p-1 my-3">
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column align-items start"> <b>Billing Address</b>
+                <p class="text-justify pt-2">James Thompson, 356 Jonathon Apt.220,</p>
+                <p class="text-justify">New York</p>
+            </div>
+        </div>
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column align-items start"> <b>Shipping Address</b>
+                <p class="text-justify pt-2">James Thompson, 356 Jonathon Apt.220,</p>
+                <p class="text-justify">New York</p>
+            </div>
+        </div>
+    </div> --}}
+    <div class="pl-3 font-weight-bold"></div>
+    <div class="d-sm-flex justify-content-between rounded my-3 subscriptions">
+        <div> <b>{{order._id}}</b> </div>
+        <div>{{date order.updatedAt}}</div>
+        <div>Status&NonBreakingSpace; : {{order.deliveryStatus}} </div>
+        <div> Total: <b> ₹{{order.totalPrice}}</b> </div>
+        <a class="text-justify text-danger" hidden id="delivery" >{{order.deliveryStatus}}</a> 
+    </div>
+</div>
+
+
+
+<script>
+    function cancelOrder(id){
+     
+    let status= document.getElementById('delivery').innerHTML
+    if(status == "processing"){
+      
+
+         swal({
+      title: "Are you sure?",
+      text: "Cancel the order !",
+      icon: "warning",
+      buttons: true,
+      className: "swal-delete",
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+
+
+          const res = await  axios.post(`/cancelOrder/${id}`,{}).then((e)=>{
+            console.log(id)
+          })
+
+          swal("Poof! Your  file has been deleted!", {
+            icon: "success",
+            className: "swal-delete",
+            button: false,
+            timer: 7000,
+          });
+          window.location.reload()
+        } else {
+          swal({
+            text: "Your  Order is Safe!",
+            className: "swal-delete",
+            button: false,
+            timer: 700,
+          });
+        }
+      });
+    }else{
+             swal({
+      title: "OOps",
+      text: "'Item Already Shipped !",
+      icon: "warning",
+      buttons: false,
+      className: "swal-delete",
+      dangerMode: true,
+      timer: 1000,
+    })
+    }
+        }
+        
+    const stepsCompleted = parseInt(document.getElementById('ul').getAttribute('data-steps-completed'));
+
+const steps = document.getElementsByClassName('li');
+
+setTimeout(() => {
+  
+  for(let i=0; i<stepsCompleted; i++) {
+    steps[i].classList.add('completed');
+  }
+  
+}, 1000);
+</script>

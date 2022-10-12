@@ -1,0 +1,177 @@
+{{!-- <h1>{{message}}</h1>
+<h2>{{error.status}}</h2>
+<pre>{{error.stack}}</pre> --}}
+
+<style>
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  #notfound {
+    position: relative;
+    height: 100vh;
+  }
+
+  #notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .notfound {
+    max-width: 520px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .notfound .notfound-404 {
+    position: relative;
+    height: 200px;
+    margin: 0px auto 20px;
+    z-index: -1;
+  }
+
+  .notfound .notfound-404 h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 236px;
+    font-weight: 200;
+    margin: 0px;
+    color: #211b19;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .notfound .notfound-404 h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #211b19;
+    background: #fff;
+    padding: 10px 5px;
+    margin: auto;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+  }
+
+  .notfound a {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 13px 23px;
+    background: #090909;
+    font-size: 18px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+  .notfound a:hover {
+    color: gray;
+    background: #211b19;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .notfound .notfound-404 h1 {
+      font-size: 148px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+      height: 148px;
+      margin: 0px auto 10px;
+    }
+
+    .notfound .notfound-404 h1 {
+      font-size: 86px;
+    }
+
+    .notfound .notfound-404 h2 {
+      font-size: 16px;
+    }
+
+    .notfound a {
+      padding: 7px 15px;
+      font-size: 14px;
+    }
+  }
+</style>
+<link type="text/css" rel="stylesheet" href="css/error.css" />
+<div id="notfound">
+  <div class="notfound">
+       <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+  width="250" height="60" viewBox="-20 10 800.000000 200.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,193.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M4005 1546 c-145 -28 -259 -90 -354 -191 -135 -145 -186 -338 -146
+-560 39 -220 202 -386 440 -451 93 -25 349 -31 454 -9 79 16 247 67 258 79 7
+7 -17 66 -27 66 -4 0 -28 -11 -53 -25 -126 -71 -388 -97 -549 -56 -214 55
+-362 194 -412 388 -21 79 -21 250 -1 328 34 131 111 243 210 300 159 93 414
+107 639 35 49 -16 93 -27 97 -25 4 3 12 19 18 35 13 37 10 39 -139 70 -133 27
+-338 35 -435 16z"/>
+<path d="M235 1513 c4 -21 9 -263 11 -538 4 -391 2 -517 -9 -577 l-13 -78 182
+0 c273 0 386 21 495 91 154 98 183 344 55 456 -58 52 -101 71 -220 98 l-29 6
+49 23 c111 53 183 150 191 260 10 119 -38 201 -145 249 -80 36 -165 47 -386
+47 l-188 0 7 -37z m405 -24 c86 -14 142 -48 177 -107 24 -41 28 -57 28 -127 0
+-89 -12 -120 -66 -173 -71 -69 -219 -110 -351 -98 l-78 8 0 239 0 239 23 5
+c114 26 176 29 267 14z m100 -588 c78 -24 145 -77 171 -135 23 -51 25 -159 4
+-210 -56 -133 -238 -205 -452 -178 -52 7 -99 15 -104 18 -5 3 -9 122 -9 264
+l0 259 23 5 c12 2 85 3 162 1 107 -2 155 -8 205 -24z"/>
+<path d="M1347 1503 c11 -63 10 -1086 0 -1141 l-9 -42 368 2 368 3 13 44 12
+44 -47 -7 c-207 -26 -519 -32 -575 -11 -16 7 -17 41 -17 504 0 431 4 531 23
+635 1 7 -24 12 -71 14 l-73 3 8 -48z"/>
+<path d="M2550 1006 c-133 -300 -261 -577 -285 -616 l-44 -70 67 0 68 0 10 68
+c8 43 35 120 79 220 l68 152 271 0 272 0 61 -147 c67 -159 83 -210 83 -260 l0
+-33 80 0 c44 0 80 3 80 6 0 4 -15 32 -34 63 -19 31 -123 265 -231 521 -270
+637 -268 634 -286 638 -12 2 -73 -126 -259 -542z m370 80 c60 -143 108 -261
+106 -263 -2 -2 -112 -2 -244 -1 l-241 3 103 230 c56 127 113 253 125 280 20
+44 24 48 32 30 5 -11 59 -137 119 -279z"/>
+<path d="M4917 1488 c10 -81 11 -1035 0 -1110 l-8 -58 71 0 72 0 -7 28 c-4 15
+-9 155 -12 312 -4 281 -4 285 15 265 11 -11 130 -139 266 -285 382 -409 465
+-483 590 -522 47 -15 80 -19 141 -15 84 5 185 31 185 48 0 7 -19 41 -57 98 -1
+2 -13 -6 -28 -17 -88 -70 -238 -39 -365 75 -30 26 -190 192 -357 368 l-304
+320 169 165 c93 91 213 203 267 250 54 47 112 97 129 112 l31 27 -77 1 c-77 0
+-78 0 -94 -32 -17 -33 -410 -437 -477 -490 l-39 -31 5 244 c3 134 8 259 12
+277 l7 32 -72 0 -72 0 9 -62z"/>
+</g>
+</svg>
+    <div class="notfound-404">
+      <h1>Oops!</h1>
+      <h2>{{error.status}}- The Page can't be found</h2>
+      
+
+    </div>
+    {{#if err.admin}}
+    <a href="/admin">Go TO Homepage</a>
+    {{else}}
+    <a href="/">Go TO Homepage</a>
+    {{/if}}
+  </div>
+</div>
+
+<pre>{{message}}</pre>

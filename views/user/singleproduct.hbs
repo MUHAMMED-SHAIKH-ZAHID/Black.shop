@@ -1,0 +1,499 @@
+<link rel="stylesheet" href="/assets/css/productpage.css">
+
+
+{{!-- new sigle product --}}
+<div class="container  mb-5 " id="fadeshow1">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-3 ">
+         <div class="container px-5">
+        <div class=" right-side pt-4 mt-4">
+
+          <div class="d-flex justify-content-between align-items-center ">
+            <h6 class="d-flex align-items-end">MATERIALS, CARE AND ORIGIN</h6>
+          </div>
+          <div class="mt-2 pr-3 content small pt-3">
+            <p class="mt-2">JOIN LIFE</p>
+            <p class="text-muted"><small>{{products.material}}</small></p>
+   <p>CARE</p>
+    <p class="small text-muted"><small>Caring for your clothes is caring for the environment.
+Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush, depending on the characteristics of the product, can help you care for it. Whenever possible, try to use products that are respectful of the environment.</small> </p>
+          </div>
+        </div></div>
+
+      </div>
+      <div class="col-md-5 "> 
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image col-10 "> <img  src="/{{products.myimg.[0]}}" class="" alt="Product Image 1" id="main_product_image" width="300" >
+          <div class="thumbnail_images col-2">
+            <ul id="thumbnail">
+              <li><img onclick="changeImage(this)" src="/{{products.myimg.[0]}}" alt="Product Image 1" width="50" height="100"></li>
+              <li><img onclick="changeImage(this)" src="/{{products.myimg.[1]}}" alt="Product Image 1" width="50" height="100"></li>
+              <li><img onclick="changeImage(this)" src="/{{products.myimg.[2]}}" alt="Product Image 1" width="50" height="100"></li>
+             
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="container px-5">
+        <div class="p-3 right-side pt-4 mt-4 shaikh">
+          <div class="d-flex justify-content-between align-items-center ">
+            <h3>{{products.pro_name}}</h3> 
+          </div>
+          <div class="mt-2 pr-3 pt-3">
+            <p><small class="text-muted">{{products.description}}</small></p>
+          </div>
+          <h4 class="pt-4">Rs:{{products.price}}</h4>
+          <p class="small text-muted"><small>incl. of all taxes</small> </p>
+          <div class="ratings d-flex flex-row align-items-center">
+            <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i
+                class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>1
+              reviews</span>
+          </div>
+          <div class="mt-5"> <span class="fw-bold">Color : BLACK</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1"></li>
+                <li id="marker-2"></li>
+                <li id="marker-3"></li>
+                <li id="marker-4"></li>
+               
+              </ul>
+            </div>
+          </div>
+          <div  class="buttons d-flex flex-row mt-5 gap-3"> <button onclick="wishlist('{{products._id}}')" class="btn btn-outline-dark">Wishlist</button>
+           <button onclick="addToCart('{{products._id}}')"
+              class="btn btn-dark">Add to Basket</button> </div>
+          {{!-- <div class="search-option"> <i class='bx bx-search-alt-2 first-search'></i> --}}
+            {{!-- <div class="inputs"> <input type="text" name=""> </div> <i class='bx bx-share-alt share'></i> --}}
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div class="container  mb-5" id="fadeshow2">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image"> <img src="/{{products.myimg.[0]}}" alt="Product Image 1" id="sub_product_image" width="350">
+          </div>
+          <div class="thumbnail_images">
+            <ul id="thumbnail">
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[0]}}" alt="Product Image 1" width="70"></li>
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[1]}}" alt="Product Image 1" width="70"></li>
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[2]}}" alt="Product Image 1" width="70"></li>
+             
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>{{products.pro_name}}</h3> <span class="heart"><i class='bx bx-heart'></i></span>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p>{{products.description}}</p>
+          </div>
+          <h3>Rs:{{products.price}}</h3>
+           <p class="small text-muted"><small>incl. of all taxes</small> </p>
+          <div class="ratings d-flex  justify-content-start">
+             <span>1
+              reviews</span>
+          </div>
+          <div class="mt-5"> <span class="fw-bold">Color</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1"></li>
+                <li id="marker-2"></li>
+                <li id="marker-3"></li>
+                <li id="marker-4"></li>
+                <li id="marker-5"></li>   
+              </ul>
+            </div>
+          </div>
+          <div  class="buttons d-flex flex-row mt-5 gap-3"> <button onclick="wishlist('{{products._id}}')" class="btn btn-outline-dark">Wishlist</button>
+           <button onclick="addToCart('{{products._id}}')"
+              class="btn btn-dark">Add to Basket</button> </div>
+          <div class="search-option"> <i class='bx bx-search-alt-2 first-search'></i>
+            <div class="inputs"> <input type="text" name=""> </div> <i class='bx bx-share-alt share'></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+    
+    <ul class="nav nav-tabs container" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">&nbsp;Review&nbsp;</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">&nbsp;Specification&nbsp;</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">&nbsp;policy&nbsp;</button>
+  </li>
+</ul>
+{{!-- Tab-1 --}}
+<div class="tab-content paneContainer container border" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <div class="d-flex justify-content-end py-2 px-2  p-5 ">
+           <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add Review
+</button>
+
+      </div>
+    {{#each review.Rating}}
+    <div class=" bg-muted p-4">
+      <div class="d-flex justify-content-start ">
+        <p>&NonBreakingSpace; Name: <Span class="text-muted ">{{this.user.firstname}}&NonBreakingSpace;</Span></p>
+
+       {{#spg this.rating '0.5'}}
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            {{/spg}}
+            {{#spg this.rating '1'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            {{/spg}}
+            {{#spg this.rating '1.5'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            {{/spg}}{{#spg this.rating '2'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            {{/spg}}{{#spg this.rating '2.5'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+            {{/spg}}{{#spg this.rating '3'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+           {{/spg}}{{#spg this.rating '3.5'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+           {{/spg}}{{#spg this.rating '4'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+           {{/spg}}{{#spg this.rating '4.5'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+           {{/spg}}{{#spg this.rating '5'}}
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+           {{/spg}}  
+      </div>
+    
+           <div>
+           
+            
+          </div>
+           <div class="form-floating mb-4">
+            <textarea class="form-control" name='review' placeholder="Your Review" id="floatingTextarea"
+              style="height: 100px" disabled></textarea>
+            <label for="floatingTextarea"> {{this.Title}} <br> {{this.review}}</label>
+          </div>
+    </div>
+ 
+
+  
+    {{/each}}
+    
+ 
+  </div>
+  
+
+  
+  
+  
+  
+  {{!-- Tab-2 --}}
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <div class="p-5  rouded">
+      <div class="d-flex justify-content-between col-md-6 ">
+        <div class="d-flex "><span class="text-muted" >Name :</span>{{products.pro_name}}</div>
+        <div class="d-flex align-items"><span class="text-muted" >FOR:</span>{{products.Category.categoryname}}</div>
+      </div>
+      <div class="d-flex justify-content-between col-md-6  ">
+        <div class="d-flex "><span class="text-muted" >Price:&NonBreakingSpace; </span>{{products.price}}&nbsp;</div>
+        <div class="d-flex "><span class="text-muted" > &nbsp;Type:</span> {{products.SubCategory.subCategoryName}}</div>
+      </div>
+       <div class="d-flex justify-content-between col-md-12 pt-3 ">
+        <div class="d-flex "><span class="text-muted" >Discription:&NonBreakingSpace; </span>&nbsp;{{products.description}}</div>
+
+      </div>
+    </div>
+    </div>
+
+    {{!-- Tab 3 --}}
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+    <div class=" container-fluid p-5  ">
+      <p><small>At BLACK Garments, accessible from Blackstore.shop, one of our main priorities is the privacy of our customers. The Privacy Policy outlines the sorts of information that we gather store & how we utilize it.</small></p>
+
+<p><small>If you have additional questions or require more information about our Privacy Policy, please do not hesitate to contact us at online@BlackShop.com.</small></p>
+
+<p><small>This Privacy Policy applies only to our online activities and is valid for visitors to our website, with regards to the information that they shared or collected at BLACK Garments - Online Store. This policy does not apply to any information collected offline or via channels other than this website.</small></p>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- Start Footer -->
+
+<div class=" footer-container">
+  <div class="container mt-3">
+    <footer class="pt-3">
+      <div class="row">
+
+        <div class="footer-list footer-list-newsletter col-12  col-md-4 mb-3">
+          <form action="{% url 'subscribe' %}" method="POST">
+            <p class="mb-5 pt-2 text-uppercase">Newsletter</p>
+            <p class=" mb-3">Subscribe to receive updates, access to exclusive deals, and more.</p>
+            <div class="form-floating">
+              <input type="email" class="form-control mb-3" name='email' id="subscribeInput" placeholder=" ">
+              <label for="subscribeInput">Enter you email address</label>
+            </div>
+            <button class="w-50 btn btn-subscribe" type="submit" id="subscribeButton">SUBSCRIBE</button>
+          </form>
+        </div>
+
+        <div class="footer-list col-3  ms-5 col-md-2 mb-3">
+          <p class="mb-4 text-uppercase">Shop</p>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Shirt</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Jeans</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Skirt</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Hoodie</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Trowsers</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Jackets</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Cargos</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Tops</a></li>
+          </ul>
+        </div>
+
+        <div class="col-3 col-md-2 mb-3 ms-md-5 ms-4 p-0">
+          <p class="mb-4 text-uppercase">Support</p>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-3"><a  class="nav-link p-0">FAQs</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Shipping</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Warranty Policy</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Returns & Exchanges</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-3 col-md-2 mb-2 ms-md-5 ms-4 p-0">
+          <p class="mb-4 text-uppercase">Learn More</p>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-3"><a  class="nav-link p-0">About Us</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Terms & Conditions</a></li>
+            <li class="nav-item mb-3"><a  class="nav-link p-0">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 mt-2 justify-content-center">
+          <p class="about-us text-start"><small>
+              <span class="text-uppercase">Black Store , This is a fully functional E-commerse Website  is made for studying purpose , is made using javascript and css3 and Bootstrap 5</span> 
+              
+            </small></p>
+        </div>
+
+
+      </div>
+
+      <div class="footer-list-connect d-flex flex-column flex-sm-row justify-content-between py-3 mt-2">
+
+        <div class="order-lg-2 order-md-1">
+          <ul class="list-unstyled d-flex ">
+            <li class="ms-3 me-4"><small>Connect Us</small></li>
+            <li class="ms-3"><a class="link-dark" >
+                <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
+              </a></li>
+            <li class="ms-3"><a class="link-dark" >
+                <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
+              </a></li>
+            <li class="ms-3"><a class="link-dark" >
+                <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
+              </a></li>
+          </ul>
+        </div>
+        <div class="order-lg-1 order-md-2">
+          <p class="copyright">&copy; 
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+             Blackstore.shop, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+{{!-- /footer --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /*Hide radio button*/
+
+</style>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Write Your Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+  <div class="col-md-12 my-4 reivew">
+
+
+    <div class="col-12  write-review">
+      <form action="/review/{{products._id}}" method="POST">
+        <h5></h5>
+        <div>
+          <!--Rating stars -->
+          <label>Rate this Product {{products.pro_name}} </label>
+          <br>
+          <div class="rate mt-1 mb-2">
+            <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+            <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5"
+              class="half"></label>
+            <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+            <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5"
+              class="half"></label>
+            <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+            <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5"
+              class="half"></label>
+            <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+            <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5"
+              class="half"></label>
+            <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+            <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5"
+              class="half"></label>
+          </div>
+          <br>
+          <label>Write down your review below </label>
+          <br>
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control " name='Title' id="floatingTitle" placeholder=" " required
+              minlength="2">
+            <label for="floatingTitle">Title
+              <span class="text-danger"><small> *</small></span>
+            </label>
+          </div>
+          <div class="form-floating mb-4">
+            <textarea class="form-control" name='review' placeholder="Your Review" id="floatingTextarea"
+              style="height: 200px"></textarea>
+            <label for="floatingTextarea">Your Review</label>
+          </div>
+
+          <div class="text-end">
+            <input type="submit" value="Update Review" class="btn ">
+          </div>
+
+      </form>
+      <br>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- review and ratings -->
+
+    
+
+
+
+<script>
+function changeImage(element) {
+
+              var main_prodcut_image = document.getElementById('main_product_image');
+              main_prodcut_image.src = element.src;
+              
+        
+        }
+        function changephoto(element) {
+
+              var main_prodcut_image = document.getElementById('sub_product_image');
+              main_prodcut_image.src = element.src;
+              
+        
+        }
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Contact Javascript File -->
+{{!-- <script src="/mail/jqBootstrapValidation.min.js"></script>
+<script src="/mail/contact.js"></script> --}}
+
+<!-- Template Javascript -->
+
+
+
+
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/javascripts/script.js"></script>
+
+
