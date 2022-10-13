@@ -91,8 +91,7 @@ router.post("/signUpOtpVerify", (req, res) => {
   userHelper.verifyOtp(req.body, req.session.mobile).then((check) => {
     if (check === "approved") {
       userHelper.doSignUp(req.session.user).then((data) => {
-        req.session.loggedIn = true;
-        res.redirect("/");
+        res.redirect("/login");
       });
     } else {
       res.redirect("/signUpOtp");
@@ -223,10 +222,11 @@ router.get('/cartCount',(req,res)=>{
 })
 
 router.get('/Wishlist',isLogin,(req,res)=>{
-  let user=req.session.users
+  let user = req.session.users
+  let session=req.session
   let loggedIn=req.session.loggedIn
   userHelper.getAllWishlist(user).then((wishlist)=>{
-    res.render('user/wishlist',{wishlist,user:true,loggedIn})
+    res.render('user/wishlist',{wishlist,user:true,loggedIn,session})
   })
  
 })
@@ -359,19 +359,32 @@ router.post('/payment',isLogin,(req,res)=>{
 })
 
 router.get('/paymentMethod',isLogin,((req,res)=>{
+  console.log('slfja;lfsdkj')
   let session=req.session;
+  let loggedIn=req.session.loggedIn
   addressModal.findById(req.session.checkoutAddress).lean().then((address)=>{
     console.log(address,"adress adress adress adress adress adress adress addreass address")
     userHelper.getCartProducts(req.session.users._id).then((response)=>{
-      let cartProducts=response.cart;
-      if(req.session.discount){
-       cartProducts.discount = req.session.discount;
+      console.log(response,"skkkkkkkkkadlfjlaskdflsjdflaskdfjjjjjjjjjjjjjjjjjj");
+      if(!response.notEmpty){
+        res.redirect('/')
+      }else{
+
+        let cartProducts=response.cart;
+        if(req.session.discount){
+          cartProducts.discount = req.session.discount;
+        }
+        console.log(cartProducts)
+        userHelper.cartTotal({cart:cartProducts}).then((response)=>{
+          res.render('user/paymentMethod',{user:true,response,session,cartProducts,address})
+        })
       }
-      console.log(cartProducts)
-      userHelper.cartTotal({cart:cartProducts}).then((response)=>{
-        res.render('user/paymentMethod',{user:true,response,session,cartProducts,address})
-      })
+    }).catch((err)=>{
+      console.log(err)
+      res.redirect('/')
     })
+  }).catch((err)=>{
+    console.log(err,"address error")
   })
 }))
 
@@ -415,6 +428,9 @@ router.post('/verifyPayment',isLogin,(req,res)=>{
     userHelper.changeOrderStatus(req.body.order.receipt,req.session.users._id).then(() =>{
       res.json({status:true})
     })
+  }).catch(err=>{
+    console.log(err,'laskdfjlaskdfjlkakjdflajf')
+    res.redirect('/')
   })
 })
 

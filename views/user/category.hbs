@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="/assets/css/category.css">
 
-<div class="d-flex justify-content-between px-5 mt-3">
+<div class="d-flex justify-content-between px-5  py-4">
     <div class="d-flex justify-content-start">{{#with product.[0]}}
         <p class="no-decoration h2 small">{{this.Category.categoryname}}</p>
         {{/with}}
     </div>
 
-    <div class="d-flex align-items-end flex-column col-md-px-5">
+    <div class="d-flex align-items-end flex-column col-md-px-5 ">
         <for class="search-bar">
             <input type="text" id="myInput" name="search" pattern=".*\S.*" required onkeyup="search()">
             <button class="search-btn text-white" type="submit" >
@@ -29,7 +29,7 @@
     <ule id="myUL">
         <div class="row">
             {{#each product}}
-            <div class="col-md-3 col-sm-6 pt-5 f">
+            <div class="col-md-3 col-6 ">
                 <pre> <a style="display: none;">{{this.pro_name}}</a></pre>
                 <div class="product-grid">
                     <div class="product-image">

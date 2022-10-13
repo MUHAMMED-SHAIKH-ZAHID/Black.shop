@@ -96,7 +96,7 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
       <div class="col-md-6">
         <div class="p-3 right-side">
           <div class="d-flex justify-content-between align-items-center">
-            <h3>{{products.pro_name}}</h3> <span class="heart"><i class='bx bx-heart'></i></span>
+            <h3>{{products.pro_name}}</h3> 
           </div>
           <div class="mt-2 pr-3 content">
             <p>{{products.description}}</p>
@@ -147,7 +147,7 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
 <div class="tab-content paneContainer container border" id="myTabContent">
   <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
       <div class="d-flex justify-content-end py-2 px-2  p-5 ">
-           <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add Review
 </button>
 
@@ -249,15 +249,15 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div class="p-5  rouded">
       <div class="d-flex justify-content-between col-md-6 ">
-        <div class="d-flex "><span class="text-muted" >Name :</span>{{products.pro_name}}</div>
-        <div class="d-flex align-items"><span class="text-muted" >FOR:</span>{{products.Category.categoryname}}</div>
+        <div class="d-flex "><span class="text-muted small" >Name : {{products.pro_name}}</span></div>
+        <div class="d-flex align-items"><span class="text-muted small" >FOR : {{products.Category.categoryname}}</span></div>
       </div>
       <div class="d-flex justify-content-between col-md-6  ">
-        <div class="d-flex "><span class="text-muted" >Price:&NonBreakingSpace; </span>{{products.price}}&nbsp;</div>
-        <div class="d-flex "><span class="text-muted" > &nbsp;Type:</span> {{products.SubCategory.subCategoryName}}</div>
+        <div class="d-flex "><span class="text-muted small" >Price : &NonBreakingSpace; {{products.price}}</span>&nbsp;</div>
+        <div class="d-flex "><span class="text-muted small" > &nbsp;Type : {{products.SubCategory.subCategoryName}}</span> </div>
       </div>
        <div class="d-flex justify-content-between col-md-12 pt-3 ">
-        <div class="d-flex "><span class="text-muted" >Discription:&NonBreakingSpace; </span>&nbsp;{{products.description}}</div>
+        <div class="d-flex"><span class="text-muted " >Discription:&NonBreakingSpace; </span>&nbsp;<span class="small">{{products.description}}</span></div>
 
       </div>
     </div>
@@ -266,9 +266,9 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
     {{!-- Tab 3 --}}
   <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
     <div class=" container-fluid p-5  ">
-      <p><small>At BLACK Garments, accessible from Blackstore.shop, one of our main priorities is the privacy of our customers. The Privacy Policy outlines the sorts of information that we gather store & how we utilize it.</small></p>
+      <p><small>At Blackclothing Garments, accessible from blackclothing.store, one of our main priorities is the privacy of our customers. The Privacy Policy outlines the sorts of information that we gather store & how we utilize it.</small></p>
 
-<p><small>If you have additional questions or require more information about our Privacy Policy, please do not hesitate to contact us at online@BlackShop.com.</small></p>
+<p><small>If you have additional questions or require more information about our Privacy Policy, please do not hesitate to contact us at blackclothing.store.</small></p>
 
 <p><small>This Privacy Policy applies only to our online activities and is valid for visitors to our website, with regards to the information that they shared or collected at BLACK Garments - Online Store. This policy does not apply to any information collected offline or via channels other than this website.</small></p>
       
@@ -279,95 +279,95 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
 </div>
 <!-- Start Footer -->
 
-<div class=" footer-container">
-  <div class="container mt-3">
-    <footer class="pt-3">
-      <div class="row">
+  <div class=" footer-container">
+    <div class="container ">
+        <footer class="pt-3 mt-3">
+        <div class="row">
 
-        <div class="footer-list footer-list-newsletter col-12  col-md-4 mb-3">
-          <form action="{% url 'subscribe' %}" method="POST">
-            <p class="mb-5 pt-2 text-uppercase">Newsletter</p>
-            <p class=" mb-3">Subscribe to receive updates, access to exclusive deals, and more.</p>
-            <div class="form-floating">
-              <input type="email" class="form-control mb-3" name='email' id="subscribeInput" placeholder=" ">
-              <label for="subscribeInput">Enter you email address</label>
+            <div class="footer-list footer-list-newsletter col-12  col-md-4 mb-3">
+            <form action="/" >
+                <p class="mb-5 pt-2 text-uppercase">Newsletter</p>
+                <p class=" mb-3">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <div class="form-floating">
+                <input type="email" class="form-control mb-3" name='email' id="subscribeInput" placeholder=" ">
+                <label for="subscribeInput">Enter you email address</label>
+                </div>
+                <button class="w-50 btn btn-outline-dark" type="submit" id="subscribeButton">SUBSCRIBE</button>
+            </form>
             </div>
-            <button class="w-50 btn btn-subscribe" type="submit" id="subscribeButton">SUBSCRIBE</button>
-          </form>
+
+            <div class="footer-list col-3  ms-4 col-md-2 mb-3">
+            <p class="mb-4 text-uppercase">Shop</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">Shirt</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Jeans</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Skirt</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Hoodie</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Trowsers</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Jackets</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Cargos</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Tops</a></li>
+            </ul>
+            </div>
+
+            <div class="col-3 col-md-2 mb-3 ms-md-5 ms-4 p-0">
+            <p class="mb-4 text-uppercase">Support</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">FAQs</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Shipping</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Warranty Policy</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Returns & Exchanges</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Contact Us</a></li>
+            </ul>
+            </div>
+
+            <div class="col-3 col-md-2 mb-2 ms-md-5 ms-4 p-0">
+            <p class="mb-4 text-uppercase">Learn More</p>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-3"><a class="nav-link p-0">About Us</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Terms & Conditions</a></li>
+                <li class="nav-item mb-3"><a class="nav-link p-0">Privacy Policy</a></li>
+            </ul>
+            </div>
+
+            <div class="col-12 mt-2 justify-content-center">
+            <p class="about-us text-start"><small>
+                <span class="text-uppercase text-muted"><span class="text-dark">blackclothing.store</span> is designed and developed as a part of a full-stack web development project, and it is completely for learning purpose only. This project is developed using javascript as backend language, Mongoose as Database and other tools like and css and Bootstrap</span> 
+                
+                </small></p>
+            </div>
+
+
         </div>
 
-        <div class="footer-list col-3  ms-5 col-md-2 mb-3">
-          <p class="mb-4 text-uppercase">Shop</p>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Shirt</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Jeans</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Skirt</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Hoodie</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Trowsers</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Jackets</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Cargos</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Tops</a></li>
-          </ul>
+        <div class="footer-list-connect d-flex flex-column flex-sm-row justify-content-between py-3 mt-2">
+
+            <div class="order-lg-2 order-md-1">
+            <ul class="list-unstyled d-flex ">
+                <li class="ms-3 me-4"><small>Connect Us</small></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
+                </a></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
+                </a></li>
+                <li class="ms-3"><a class="link-dark">
+                    <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
+                </a></li>
+            </ul>
+            </div>
+            <div class="order-lg-1 order-md-2">
+            <p class="copyright">&copy; 
+                <script>
+                document.write(new Date().getFullYear());
+                </script>
+                Blackstore.shop, Inc. All rights reserved.
+            </p>
+            </div>
         </div>
-
-        <div class="col-3 col-md-2 mb-3 ms-md-5 ms-4 p-0">
-          <p class="mb-4 text-uppercase">Support</p>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-3"><a  class="nav-link p-0">FAQs</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Shipping</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Warranty Policy</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Returns & Exchanges</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="col-3 col-md-2 mb-2 ms-md-5 ms-4 p-0">
-          <p class="mb-4 text-uppercase">Learn More</p>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-3"><a  class="nav-link p-0">About Us</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Terms & Conditions</a></li>
-            <li class="nav-item mb-3"><a  class="nav-link p-0">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-12 mt-2 justify-content-center">
-          <p class="about-us text-start"><small>
-              <span class="text-uppercase">Black Store , This is a fully functional E-commerse Website  is made for studying purpose , is made using javascript and css3 and Bootstrap 5</span> 
-              
-            </small></p>
-        </div>
-
-
-      </div>
-
-      <div class="footer-list-connect d-flex flex-column flex-sm-row justify-content-between py-3 mt-2">
-
-        <div class="order-lg-2 order-md-1">
-          <ul class="list-unstyled d-flex ">
-            <li class="ms-3 me-4"><small>Connect Us</small></li>
-            <li class="ms-3"><a class="link-dark" >
-                <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
-              </a></li>
-            <li class="ms-3"><a class="link-dark" >
-                <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
-              </a></li>
-            <li class="ms-3"><a class="link-dark" >
-                <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
-              </a></li>
-          </ul>
-        </div>
-        <div class="order-lg-1 order-md-2">
-          <p class="copyright">&copy; 
-            <script>
-              document.write(new Date().getFullYear());
-            </script>
-             Blackstore.shop, Inc. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  </div>
-</div>
+        </footer>
+    </div>
+    </div>
 {{!-- /footer --}}
 
 

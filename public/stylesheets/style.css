@@ -319,7 +319,7 @@ li,
 
 @media (max-width: 991px) {
   .footer-list {
-    margin-left: .8rem !important;
+    margin-left: .1rem !important;
     max-width: 94%;
   }
 

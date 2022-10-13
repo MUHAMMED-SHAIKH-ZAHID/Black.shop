@@ -13,6 +13,7 @@ const { response, off } = require("../app");
 const { findOne, findOneAndDelete } = require("../models/adminModels");
 const review = require("../models/reviewModels");
 const { ObjectId } = require("mongodb");
+const { reject } = require("promise");
 const accountSid =process.env.accountSid 
 const authToken = process.env.authToken
 const serviceSid = process.env.serviceSid
@@ -395,29 +396,31 @@ let userHelper = {
     });
   },
 
-  cartTotal: ({ cart }) => {
-    return new Promise((resolve, reject) => {
-      let total = cart.Cart.reduce((acc, curr) => {
-        acc = acc + curr.product.price * curr.quantity;
-        return acc;
-      }, 0);
-      let response = {};
-      let shiping = 0;
-      if (total < 10000) {
-        shiping = 100;
+  cartTotal: async ({ cart }) => {
+    return await new Promise((resolve, reject) => {
+        try {
+        let total = cart.Cart.reduce((acc, curr) => {
+          acc = acc + curr.product.price * curr.quantity;
+          return acc;
+        }, 0);
+        let response = {};
+        let shiping = 0;
+        if (total < 10000) {
+          shiping = 100;
+        }
+        response.shiping = shiping;
+        response.total = total;
+        response.grandTotal = response.shiping + response.total;
+        if (cart.discount) {
+          response.grandTotal = response.grandTotal - cart.discount;
+          response.grandTotal = parseInt(response.grandTotal);
+          response.discount = cart.discount;
+        }
+        resolve(response);
+      } catch (err) {
+        reject(err);
       }
-      response.shiping = shiping;
-      response.total = total;
-      response.grandTotal = response.shiping + response.total;
-      if (cart.discount) {
-        response.grandTotal = response.grandTotal - cart.discount;
-        response.grandTotal=parseInt(response.grandTotal)
-        response.discount = cart.discount;
-      }
-      resolve(response);
-    }) .catch((err) => {
-      reject(err);
-    });
+      });
   },
 
   addToWishlist: (proId, userId) => {

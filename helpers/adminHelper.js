@@ -408,12 +408,14 @@ couponModel.findByIdAndUpdate(id,{
  
  getOneCategory:(id)=>{
   return new Promise(async(resolve,reject)=>{
-    let categorys = await productModel.find({Category : id}).populate('Category').lean()
-    resolve(categorys)
+    try{
+
+      let categorys = await productModel.find({Category : id}).populate('Category').lean()
+      resolve(categorys)
+    }catch(err){
+      reject(err)
+    }
   })
-  .catch((err) => {
-    reject(err);
-  });
 },
 
 getOrderCount: () => {
