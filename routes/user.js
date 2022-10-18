@@ -80,7 +80,11 @@ router.post("/register", async (req, res) => {
 });
 
 router.get("/signUpOtp", (req, res) => {
-  res.render("user/signUpOtp");
+  var mobile = req.session.mobile;
+  otpCheck = req.session.otpCheck;
+  req.session.otpcheck = null;
+  console.log(otpCheck,"its the data of otp check in the singupp otp varify and lets check the otpCheck")
+  res.render("user/signUpOtp",{mobile,otpCheck});
 });
 
 router.get("/signupform", (req, res) => {
@@ -90,10 +94,13 @@ router.get("/signupform", (req, res) => {
 router.post("/signUpOtpVerify", (req, res) => {
   userHelper.verifyOtp(req.body, req.session.mobile).then((check) => {
     if (check === "approved") {
+      req.session.otpcheck = false;
       userHelper.doSignUp(req.session.user).then((data) => {
         res.redirect("/login");
+
       });
     } else {
+      req.session.otpCheck = true;
       res.redirect("/signUpOtp");
     }
   });
@@ -101,7 +108,7 @@ router.post("/signUpOtpVerify", (req, res) => {
 
 router.post("/login",notLogin, async (req, res) => {
   userHelper.doLogin(req.body).then((response) => {
-    console.log(response,"wwwwwwwwwwwwwwwwwwwwwwoooooooooooooooooooooooooooooooooooooooowwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+    console.log(response,"wwwwwwwww")
     if(response.status === "blocked"){
       console.log("wwwwwoooooooooowwwwwwwwwww");
         req.session.logInError = "User Blocked"
@@ -135,7 +142,6 @@ router.get("/singleProduct/:id", (req, res,next) => {
   proid = req.params.id;
   adminHelper.getsingleproduct(req.params.id).then((products) => {
     userHelper.getReview(req.params.id).then((review)=>{
-      console.log(review,"it is tthe review review review reveiwe review review review review review review")
       res.render("user/singleproduct", {loggedIn,users, products,user:true,review:review[1]});
     })
   }).catch((err)=>{
@@ -169,7 +175,6 @@ router.post('/addToCart/:id',isLogin,(req,res,next)=>{
 
 router.post('/quantityplus/:id',isLogin,(req,res,next)=>{
   console.log("to check wheather axios on quantity plus is working o r nnooooot");
-  console.log(req.params.id,"wowowowowwwowowowowowowowowowowowowowowowowowowowowowowowowowo")  
   userHelper.quantityPlus(req.params.id,req.session.users._id,req.body.quantity).then((response)=>{
     res.json({response})
   }).catch((err)=>{
@@ -363,20 +368,17 @@ router.get('/paymentMethod',isLogin,((req,res)=>{
   let session=req.session;
   let loggedIn=req.session.loggedIn
   addressModal.findById(req.session.checkoutAddress).lean().then((address)=>{
-    console.log(address,"adress adress adress adress adress adress adress addreass address")
     userHelper.getCartProducts(req.session.users._id).then((response)=>{
-      console.log(response,"skkkkkkkkkadlfjlaskdflsjdflaskdfjjjjjjjjjjjjjjjjjj");
       if(!response.notEmpty){
         res.redirect('/')
       }else{
-
         let cartProducts=response.cart;
         if(req.session.discount){
           cartProducts.discount = req.session.discount;
         }
         console.log(cartProducts)
         userHelper.cartTotal({cart:cartProducts}).then((response)=>{
-          res.render('user/paymentMethod',{user:true,response,session,cartProducts,address})
+          res.render('user/paymentMethod',{user:true,response,session,cartProducts,address,loggedIn})
         })
       }
     }).catch((err)=>{

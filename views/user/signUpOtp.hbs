@@ -3,6 +3,13 @@
 <form action="/signUpOtpVerify" method="post" name="otp" id="signUpOtpVerify">
    {{!-- <input type="text" name="otp" id="">
    <input type="submit" value="submit"> --}}
+    <div class="text-danger">
+                    {{#if otpCheck}}
+                    <script>
+                        swal('Wrong', 'The otp you entered is Wrong', 'error')
+                    </script>
+                    {{/if}}
+                </div>
 
 
                      <div class="container d-flex justify-content-center pt-5 mt-5 ps-5">
@@ -66,7 +73,7 @@ c8 43 35 120 79 220 l68 152 271 0 272 0 61 -147 c67 -159 83 -210 83 -260 l0
             </div>
 
             <div class="mt-4">
-               <button type="submit" onclick="" class="btn btn-dark px-4 validate">Validate</button>
+               <button type="submit" onclick="signUpOtpVerify()" class="btn btn-dark px-4 validate">Validate</button>
             </div>
          </div>
          <div class="card-2">
@@ -83,34 +90,20 @@ c8 43 35 120 79 220 l68 152 271 0 272 0 61 -147 c67 -159 83 -210 83 -260 l0
   
     function OTPInput() {
   const inputs = document.querySelectorAll('#otp > *[id]');
-  for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput();
-  
-      
-  });
-
+  for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput();});
 </script>
 
 
 <script>
-   try{
-   function signUpOtpVerify () {
+   function signUpOtpVerify(){
       
-      alert('ok')
-      axios.post('/signUpOtpVerify', { otp: 656545 })
-         .then((e) => {
-            if (e.data.status) {
-               location.href = '/'
-      else {
-                  document.getElementById('wrong').innerHTML = "!!! You Enterd A Wrong Otp !!!"
-               }
-            }
-         })
-   
+         swal({
+                type: "success",
+                icon: "/images/loading.jpg",
+                button:false,
+                className:"glass",
+                timer: 5200
+                })
    }
-   }catch(err){
-      console.log(err.data.response)
-   }
-   
-
 
 </script>

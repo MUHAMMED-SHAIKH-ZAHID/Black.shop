@@ -65,7 +65,7 @@ body, button, input {
 } */
 .search-bar input:focus,
 .search-bar input:valid {
-	background: #fff;
+	background: rgb(29, 28, 28);
 	border-radius: 0.375em 0 0 0.375em;
 	box-shadow: 0 0 0 0.1em #d9d9d9 inset;
 	transform: scale(1);
@@ -87,14 +87,14 @@ body, button, input {
 }
 .search-btn:before {
 	border-radius: 50%;
-	box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+	box-shadow: 0 0 0 0.2em #413f3f inset;
 	top: 0.75em;
 	left: 0.75em;
 	width: 1.2em;
 	height: 1.2em;
 }
 .search-btn:after {
-	background: #f1f1f1;
+	background: #131212;
 	border-radius: 0 0.25em 0.25em 0;
 	top: 51%;
 	left: 51%;

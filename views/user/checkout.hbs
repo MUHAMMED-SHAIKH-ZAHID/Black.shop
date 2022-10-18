@@ -297,7 +297,9 @@
     function paymentMethod(){
       console.log('hi')
         let address = $('input[type="radio"][name="address"]:checked').val()
-        try{
+        console.log(address,"its the address")
+        if(address){
+             try{
            axios.post(`/payment`,{
             address: address
           }).then((e)=>{
@@ -307,6 +309,18 @@
         }catch(err){
            console.log(err)
         }
+        }else{
+         
+         swal({
+                type: "Warning",
+                icon: "warning",
+                title: "Please Add Address",
+                button:false,
+                className:"glass",
+                timer: 1500
+                })
+        }
+     
     }
   </script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
