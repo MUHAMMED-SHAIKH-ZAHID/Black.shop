@@ -24,12 +24,13 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
       </div>
       <div class="col-md-5 "> 
         <div class="d-flex flex-column justify-content-center">
-          <div class="main_image col-10 "> <img  src="/{{products.myimg.[0]}}" class="" alt="Product Image 1" id="main_product_image" width="300" >
+          <div class="main_image col-10 "> <img  src="/{{products.myimg.[0]}}" class="" alt="Product Image 1" id="main_product_image" width="350" >
           <div class="thumbnail_images col-2">
             <ul id="thumbnail">
               <li><img onclick="changeImage(this)" src="/{{products.myimg.[0]}}" alt="Product Image 1" width="50" height="100"></li>
               <li><img onclick="changeImage(this)" src="/{{products.myimg.[1]}}" alt="Product Image 1" width="50" height="100"></li>
               <li><img onclick="changeImage(this)" src="/{{products.myimg.[2]}}" alt="Product Image 1" width="50" height="100"></li>
+             
              
             </ul>
           </div>
@@ -45,7 +46,7 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
           <div class="mt-2 pr-3 pt-3">
             <p><small class="text-muted">{{products.description}}</small></p>
           </div>
-          <h4 class="pt-4">Rs:{{products.price}}</h4>
+          <h4 class="pt-4">₹:{{products.price}}</h4>
           <p class="small text-muted"><small>incl. of all taxes</small> </p>
           <div class="ratings d-flex flex-row align-items-center">
             <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i
@@ -76,18 +77,19 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
     </div>
   </div> 
 
-  <div class="container  mb-5" id="fadeshow2">
+  <div class="container pt-3 mb-5" id="fadeshow2">
   <div class="card">
     <div class="row g-0">
       <div class="col-md-6 border-end">
         <div class="d-flex flex-column justify-content-center">
-          <div class="main_image"> <img src="/{{products.myimg.[0]}}" alt="Product Image 1" id="sub_product_image" width="350">
+          <div class="main_imagesm"> <img src="/{{products.myimg.[0]}}" alt="Product Image 1" id="sub_product_image" width="350">
           </div>
           <div class="thumbnail_images">
             <ul id="thumbnail">
-              <li><img onclick="changephoto(this)" src="/{{products.myimg.[0]}}" alt="Product Image 1" width="70"></li>
-              <li><img onclick="changephoto(this)" src="/{{products.myimg.[1]}}" alt="Product Image 1" width="70"></li>
-              <li><img onclick="changephoto(this)" src="/{{products.myimg.[2]}}" alt="Product Image 1" width="70"></li>
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[0]}}" alt="Product Image 1" width="60"></li>
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[1]}}" alt="Product Image 1" width="60"></li>
+              <li><img onclick="changephoto(this)" src="/{{products.myimg.[2]}}" alt="Product Image 1" width="60"></li>
+             
              
             </ul>
           </div>
@@ -95,30 +97,25 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
       </div>
       <div class="col-md-6">
         <div class="p-3 right-side">
-          <div class="d-flex justify-content-between align-items-center">
-            <h3>{{products.pro_name}}</h3> 
-          </div>
-          <div class="mt-2 pr-3 content">
-            <p>{{products.description}}</p>
-          </div>
-          <h3>Rs:{{products.price}}</h3>
-           <p class="small text-muted"><small>incl. of all taxes</small> </p>
-          <div class="ratings d-flex  justify-content-start">
+          <div class="d-flex justify-content-between ">
+            <div class="d-flex col-9 text-uppercase"> <h4>{{products.pro_name}}</h4></div>
+            <div class="col-3"> <h4>₹ &nbsp;{{products.price}}</h4>
+                <h6 class="small text-muted "><small>incl. of all taxes</small> </h6>
+          </div></div>
+             
+         
+          <div class="mt-1 pr-3 content">
+     
              <span>1
               reviews</span>
+            <p>{{products.description}}</p>
           </div>
-          <div class="mt-5"> <span class="fw-bold">Color</span>
-            <div class="colors">
-              <ul id="marker">
-                <li id="marker-1"></li>
-                <li id="marker-2"></li>
-                <li id="marker-3"></li>
-                <li id="marker-4"></li>
-                <li id="marker-5"></li>   
-              </ul>
-            </div>
           </div>
-          <div  class="buttons d-flex flex-row mt-5 gap-3"> <button onclick="wishlist('{{products._id}}')" class="btn btn-outline-dark">Wishlist</button>
+           
+          <div class=" d-flex  justify-content-start p-3 right-side">
+             
+   
+          <div  class="buttons d-flex flex-row  gap-4 "> <button onclick="wishlist('{{products._id}}')" class="btn btn-outline-dark">Wishlist</button>
            <button onclick="addToCart('{{products._id}}')"
               class="btn btn-dark">Add to Basket</button> </div>
           <div class="search-option"> <i class='bx bx-search-alt-2 first-search'></i>
@@ -132,7 +129,7 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
 
   
     
-    <ul class="nav nav-tabs container" id="myTab" role="tablist">
+    <ul class="nav nav-tabs container " id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">&nbsp;Review&nbsp;</button>
   </li>
@@ -144,9 +141,9 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
   </li>
 </ul>
 {{!-- Tab-1 --}}
-<div class="tab-content paneContainer container border" id="myTabContent">
+<div class="tab-content paneContainer container border " id="myTabContent">
   <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-      <div class="d-flex justify-content-end py-2 px-2  p-5 ">
+      <div class="d-flex justify-content-end   p-2 ">
            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add Review
 </button>
@@ -246,7 +243,7 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
   
   
   {{!-- Tab-2 --}}
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+  <div class="tab-pane fade container" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div class="p-5  rouded">
       <div class="d-flex justify-content-between col-md-6 ">
         <div class="d-flex "><span class="text-muted small" >Name : {{products.pro_name}}</span></div>
@@ -264,11 +261,11 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
     </div>
 
     {{!-- Tab 3 --}}
-  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+  <div class="tab-pane fade container" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
     <div class=" container-fluid p-5  ">
       <p><small>At Blackclothing Garments, accessible from blackclothing.store, one of our main priorities is the privacy of our customers. The Privacy Policy outlines the sorts of information that we gather store & how we utilize it.</small></p>
 
-<p><small>If you have additional questions or require more information about our Privacy Policy, please do not hesitate to contact us at blackclothing.store.</small></p>
+<p><small>If you have additional questions or require more information about our Privacy Policy, please do not hesitate to contact us at _shaikh_zahid or blackclothing.store.</small></p>
 
 <p><small>This Privacy Policy applies only to our online activities and is valid for visitors to our website, with regards to the information that they shared or collected at BLACK Garments - Online Store. This policy does not apply to any information collected offline or via channels other than this website.</small></p>
       
@@ -279,9 +276,9 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
 </div>
 <!-- Start Footer -->
 
-  <div class=" footer-container">
+  <div class=" footer-container mt-3">
     <div class="container ">
-        <footer class="pt-3 mt-3">
+        <footer class="pt-3">
         <div class="row">
 
             <div class="footer-list footer-list-newsletter col-12  col-md-4 mb-3">
@@ -348,11 +345,11 @@ Simple steps like cleaning your clothing with a dry cotton cloth or a soft brush
                 <li class="ms-3"><a class="link-dark">
                     <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
                 </a></li>
-                <li class="ms-3"><a class="link-dark">
+                <li class="ms-3"><a href="https://instagram.com/_shaikh_zahid?igshid=YmMyMTA2M2Y=" target="_blank" class="link-dark">
                     <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
                 </a></li>
-                <li class="ms-3"><a class="link-dark">
-                    <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
+                <li class="ms-3"><a href="https://www.linkedin.com/in/muhammad-shaikh-zahid-u-155a98248" target="_blank" class="link-dark">
+                    <iconify-icon icon="arcticons:linkedin" width="24" height="24"></iconify-icon>
                 </a></li>
             </ul>
             </div>

@@ -433,6 +433,21 @@ getOrderCount: () => {
   });
 },
 
+getLatestProduct: () => {
+  return new Promise((resolve, reject) => {
+    productModel
+      .find({})
+      .populate("Category")
+      .populate("SubCategory")
+      .limit(4)
+      .sort({updatedAt: -1})
+      .lean()
+      .then((products) => {
+        resolve(products);
+      });
+  });
+}
+
 
 
 }

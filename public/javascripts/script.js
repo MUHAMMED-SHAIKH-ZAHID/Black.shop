@@ -517,6 +517,8 @@ class Slider {
   }
 
   listeners() {
+    window.addEventListener("touchmove", this.nextSlide, { passive: true });
+    window.addEventListener("touchstart", this.nextSlide, { passive: true });
     window.addEventListener("ontouchmove", this.nextSlide, { passive: true });
     window.addEventListener("wheel", this.nextSlide, { passive: true });
   }

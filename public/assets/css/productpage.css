@@ -9,13 +9,13 @@ body {
 
 .thumbnail_images ul {
     list-style: none;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-top: 10px
 }
 
 .thumbnail_images ul li {
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
     cursor: pointer;
     transition: all 0.5s
@@ -31,6 +31,16 @@ body {
     align-items: center;
     border-bottom: 1px solid #eee;
     height: 600px;
+    width: 100%;
+    overflow: hidden
+}
+
+.main_imagesm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    height: 560px;
     width: 100%;
     overflow: hidden
 }

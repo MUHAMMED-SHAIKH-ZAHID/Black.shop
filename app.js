@@ -70,6 +70,10 @@ app.engine(
         let datas = data + "";
         return datas.slice(0, 25);
       },
+      slices: function (data) {
+        let datas = data + "";
+        return datas.slice(0, 180)+"....";
+      },
     },
   })
 );

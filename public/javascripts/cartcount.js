@@ -3,6 +3,7 @@ const count = async()=>{
     try{
         const res=await axios.get('/cartCount',{}).then((e)=>{
             document.getElementById('cart-count').innerHTML=e.data.response
+            document.getElementById('cart-count1').innerHTML=e.data.response
         })
     }catch(err){
     console.log(err.response.data)
@@ -10,6 +11,7 @@ const count = async()=>{
     try{
         const res=await axios.get('/wishlistCount',{}).then((e)=>{
             document.getElementById('wishlist-count').innerHTML=e.data.response
+            document.getElementById('wishlist-count1').innerHTML=e.data.response
         })
     }catch(err){
         console.log(err.response.data)

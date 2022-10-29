@@ -51,10 +51,13 @@ router.get("/", function (req, res, next) {
   adminHelper.getAllBanner().then((banner)=>{
     adminHelper.getallproducts().then((product) => {
       adminHelper.getAllCategory().then((category)=>{
-        let users = req.session.users;
-        let user = true;
-        let loggedIn = req.session.loggedIn;
-        res.render("user/user-home", { loggedIn, users, product, user,banner,category});
+        adminHelper.getLatestProduct().then((latest)=>{
+
+          let users = req.session.users;
+          let user = true;
+          let loggedIn = req.session.loggedIn;
+          res.render("user/user-home", { loggedIn, users, product, user,banner,category,latest});
+        })
 
       })
     });
@@ -142,7 +145,7 @@ router.get("/singleProduct/:id", (req, res,next) => {
   proid = req.params.id;
   adminHelper.getsingleproduct(req.params.id).then((products) => {
     userHelper.getReview(req.params.id).then((review)=>{
-      res.render("user/singleproduct", {loggedIn,users, products,user:true,review:review[1]});
+      res.render("user/singleproduct", {loggedIn,users, products,user:true,review:review[0]});
     })
   }).catch((err)=>{
     next(err)

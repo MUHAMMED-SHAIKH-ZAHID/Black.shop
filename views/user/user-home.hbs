@@ -176,7 +176,7 @@
                    </ul>
                 </div>
                 <div class="product-content d-flex justify-content-between">
-                    <div class="title"><a></a>{{this.pro_name}}</a></div> 
+                    <div class="title text-uppercase"><a></a>{{this.pro_name}}</a></div> 
                     <div class="price">&#8377;{{this.price}}</div>
                 </div>
             </div>
@@ -317,96 +317,41 @@
 
 
 <!-- Start Featured Product -->
-{{!-- <section class="bg-light">
+<section class="bg-light">
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Featured Product</h1>
+                <h1 class="h1">Latest Product</h1>
                 <p>
-                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident.
+                Women who wear black lead colorful lives
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+            {{#each latest}}
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card ">
+                    <a href="/singleProduct/{{this._id}}">
+                        <img src="/{{this.myimg.[0]}}" class="img-fluid"  alt="..." >
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$240.00</li>
+                       
+                            <li class="text-muted text-right">&#8377;{{this.price}}</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                        <a href="shop-single.html" class="h4 text-decoration-none text-dark text-uppercase">{{this.pro_name}}</a>
                         <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-                            deserunt.
+                          {{slices this.description}}
                         </p>
-                        <p class="text-muted">Reviews (24)</p>
+                       
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$480.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-                        <p class="card-text">
-                            Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo
-                            ullamcorper.
-                        </p>
-                        <p class="text-muted">Reviews (48)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$360.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
-                        <p class="card-text">
-                            Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque
-                            ipsum lobortis nec.
-                        </p>
-                        <p class="text-muted">Reviews (74)</p>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
+            
         </div>
     </div>
-</section> --}}
+</section>
 <!-- End Featured Product -->
 
     <!-- Start Footer -->
@@ -480,11 +425,11 @@
                 <li class="ms-3"><a class="link-dark">
                     <iconify-icon icon="arcticons:twitter" width="24" height="24"></iconify-icon>
                 </a></li>
-                <li class="ms-3"><a class="link-dark">
+                <li class="ms-3"><a href="https://instagram.com/_shaikh_zahid?igshid=YmMyMTA2M2Y=" target="_blank" class="link-dark">
                     <iconify-icon icon="ph:instagram-logo-light" width="24" height="24"></iconify-icon>
                 </a></li>
-                <li class="ms-3"><a class="link-dark">
-                    <iconify-icon icon="uit:facebook-f" width="24" height="24"></iconify-icon>
+                <li class="ms-3"><a href="https://www.linkedin.com/in/muhammad-shaikh-zahid-u-155a98248" target="_blank" class="link-dark">
+                    <iconify-icon icon="arcticons:linkedin" width="24" height="24"></iconify-icon>
                 </a></li>
             </ul>
             </div>

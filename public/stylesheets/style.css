@@ -285,7 +285,7 @@ div.sticky {
 
 
 .footer-container {
-  background-color: #8e8c6d23;
+  background-color: #e6e6df23;
 }
 
 .form-control{
@@ -338,5 +338,18 @@ li,
     margin-bottom: 4rem !important;
   }
 
+}
+
+@media only screen and (max-width: 726px) {
+  #fadeshow1 {
+      display: none;
+     
+  }
+}
+@media only screen and (min-width: 526px) {
+  #fadeshow2 {
+      display: none;
+     
+  }
 }
 

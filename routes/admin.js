@@ -114,7 +114,7 @@ router.get("/delete-product/:id",isLogin,(async(req,res)=>{
   })
 }))
 
-router.post("/update-products/:id",upload.array('myimg',3),(req,res)=>{
+router.post("/update-products/:id",upload.array('myimg',4),(req,res)=>{
   console.log(req.body);
   const images=req.files
   console.log(req.files)
@@ -192,7 +192,7 @@ router.post("/subcategoryregister",(req,res)=>{
   })
 })
 
-router.post('/register-products',upload.array("myimg",3),(req,res)=>{
+router.post('/register-products',upload.array("myimg",4),(req,res)=>{
   const images=req.files
   let array=[]  
   array = images.map((value)=> value.filename)
